@@ -1,0 +1,107 @@
+Interview questions
+EPAM-
+1-
+button > click
+windows1(no value)
+windows2(value)
+windows3(no value)
+=======================
+get.windowhandle(): This method helps to get the window handle of the current window
+get.windowhandles(): This method helps to get the handles of all the windows opened
+set: This method helps to set the window handles in the form of a string. set<string> set= driver.get.windowhandles()
+switch to: This method helps to switch between the windows
+action: This method helps to perform certain actions on the windows
+
+public class WindowHandle_Demo { 
+public static void main(String[] args) throws Exception {
+
+
+System.setProperty("webdriver.chrome.driver","Path to the driver"); 
+WebDriver driver = new ChromeDriver();
+
+driver.manage().window().maximize();
+
+// Load the website
+driver.get("http://www.naukri.com/");
+
+// It will return the parent window name as a String
+String parent=driver.getWindowHandle();
+
+Set<String>s=driver.getWindowHandles();
+
+// Now iterate using Iterator
+Iterator<String> I1= s.iterator();
+
+while(I1.hasNext())
+{
+
+String child_window=I1.next();
+
+
+if(!parent.equals(child_window))
+{
+driver.switchTo().window(child_window);
+
+System.out.println(driver.switchTo().window(child_window).getTitle());
+
+driver.close();
+}
+
+}
+//switch to the parent window
+driver.switchTo().window(parent);
+
+}
+}
+================================================
+about getting the text 
+about windows handles
+
+2- abstract classes
+3- maven profiles
+4- Java SET and LIST
+5- OOPS concept and its usage
+6- scrum story estimation questions
+7- framework creation questions
+8- throwable 
+9- try with resoures in exception
+10- paratmeteriztion in jenkins 
+11- what is scope in pom.xml
+12- what is Map.put and Set
+13- what is the latest selenium version
+14- REST -context
+15- what is pattern used in current framework 
+16- what is POM and page factory
+17- what is patterns
+18- Java collections
+19- where you have used abstract in currect project
+20- Different reporting tools which is used
+21- GIT branching startegy used - release - feature - task
+22- how you edit the lastet commit in GIT - git commit --amend -m "New message" git push --force repository-name branch-name.
+23- How you can motivate indivisual to work
+24- TestNG- listners
+25- Request specification in API testing
+26- git merge 
+27- git rebase
+
+=========================
+Abstract class:
+
+An abstract class is a class that cannot be instantiated. It serves as a blueprint for its subclasses.
+It may contain both abstract and non-abstract methods.
+It can have constructors, instance variables, and static variables.
+It can have instance methods and static methods.
+It can also have final methods, which cannot be overridden by subclasses.
+It may or may not have abstract methods.
+Abstract classes can provide default implementations for methods, which subclasses can inherit or override.
+
+Abstract method:
+
+An abstract method is a method declared without an implementation.
+It does not have a body; it ends with a semicolon instead of curly braces.
+It is declared using the abstract keyword in the method signature.
+It must be defined in an abstract class or an interface.
+Subclasses of an abstract class must provide an implementation for all abstract methods, or they must be declared abstract themselves.
+Abstract methods define a contract that subclasses must follow by providing their own implementation.
+They allow for polymorphism, as different subclasses can provide different implementations for the same abstract method.
+These features of abstract classes and methods in Java enable abstraction, modularity, and provide a way to define common behavior that subclasses can inherit or override based on their specific needs.

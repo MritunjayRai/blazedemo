@@ -1,0 +1,9 @@
+Interview questions from the Iron Mountain
+1- print the array in ascending order
+2- poll scm in jenkins
+3- Assertions
+4- Testing Strategy
+
+LinkedIn public profile link- 
+https://www.linkedin.com/in/mritunjay-rai-public
+

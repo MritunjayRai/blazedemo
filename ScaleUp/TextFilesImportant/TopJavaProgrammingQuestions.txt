@@ -1,0 +1,56 @@
+Top Interview questions on Java for Selenium Testers
+
+Program to check palindrome numbers.
+Program to reverse integer in JAVA.
+Program to finding missing numbers in array.
+Program to find duplicate numbers in JAVA array.
+Program to find the largest & smallest numbers in an array.
+Program to swap two two integers without using third variable and two swap strings without using third variable.
+Program to find prime numbers.
+Program to find Armstrong number.
+Program to find factorial of a number.
+Program to find duplicate words in a given strings.
+Program to print count of vowels in string in java.
+Program sorting an array in ascending order by removing duplicates.
+Program to check palindrome string.
+Program to count digits in a number.
+Program to count even odd digit in a number.
+Program to count sum of digits in a number.
+Program to find largest of 3 numbers.
+Program to generate random numbers & strings in java.
+Program to find sum of elements in array.
+Program to print number of words, character frequency in string.
+Program to print characters in descending order of frequency.
+Program to find majority elements in an array.
+Program to sort names in an array.
+Program to find intersection of elements into arrays in java.
+Program to check panagram.
+Program to find longest substring without repetition.
+Program for string compression.
+Program to get the first letter of each word string.
+Program to print all sub strings for a given strings.
+Program for Stack implementation using two array in java.
+Program for Stack implementation using array in java.
+Program for Binary search in java.
+Program to move all zero to end of array.
+Program to move all negative number in start of array & +ve number in end of an array.
+Program to count number of vowels in a given string.
+Program to count the number of words in a given string.
+Program to reverse each word in a given string.
+Program to find numbers of words characters and number in a given text file.
+Program to print pyramid pattern of numbers?
+Program to reverse a string without using loops and build-in functions.
+Program to generate Fibonacci series.
+Program to Print even and odd number in an array.
+Program to check the quality of two arrays.
+Program for how to reverse the order of elements in arraylist in java?
+Program for searching an element in array using a linear search.
+Program for searching an element in array using a Binary search.
+Program for Sorting an array using bubble sort.
+Program to sort elements in an array using build-in methods.
+Program to remove junk or special characters in string.
+Program to remove white spaces in string.
+Program to read data from text file.
+Program to write data in text file.
+Program to perform calculator operation.
+Program to find the second minimum and maximum number in an array.

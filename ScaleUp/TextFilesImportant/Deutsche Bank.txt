@@ -1,0 +1,89 @@
+Your Key Responsibilities
+
+Work with end users, BAs, QAs, UX, dev teams and project managers on requirements, test design and test planning
+Perform exploratory, functional, regression, performance, and usability testing
+Design and develop automated tests, conducting UAT Testing with end users
+Planning and maintaining Testing & UAT environments, assistance in UAT testing, work with peer teams to organize and perform integration testing
+ 
+
+Your skills and experience
+
+In-depth experience of QA, preferably in distributed concurrent systems
+Experience organizing and performing integration testing across multiple systems
+Good skills in java based QA automation technologies for backend test automation
+Basic knowledge of Linux, basic knowledge of SQL
+ 
+ 
+ SQL-
+ ===
+ Certainly! Here's the basic syntax of SQL (Structured Query Language):
+
+1. SELECT statement:
+   - Retrieve data from one or more tables.
+   - Syntax: `SELECT column1, column2, ... FROM table_name WHERE condition;`
+
+2. INSERT statement:
+   - Insert data into a table.
+   - Syntax: `INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);`
+
+3. UPDATE statement:
+   - Modify existing data in a table.
+   - Syntax: `UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;`
+
+4. DELETE statement:
+   - Remove data from a table.
+   - Syntax: `DELETE FROM table_name WHERE condition;`
+
+5. CREATE statement:
+   - Create a new table, view, or other database objects.
+   - Syntax: `CREATE TABLE table_name (column1 datatype, column2 datatype, ...);`
+
+6. ALTER statement:
+   - Modify the structure of an existing table (add, modify, or drop columns).
+   - Syntax: `ALTER TABLE table_name ADD column_name datatype;`
+
+7. DROP statement:
+   - Delete an existing table or other database objects.
+   - Syntax: `DROP TABLE table_name;`
+
+8. SELECT DISTINCT statement:
+   - Retrieve unique values from a column.
+   - Syntax: `SELECT DISTINCT column_name FROM table_name;`
+
+9. WHERE clause:
+   - Filter rows based on a specific condition.
+   - Syntax: `SELECT column1, column2, ... FROM table_name WHERE condition;`
+
+10. ORDER BY clause:
+    - Sort the result set in ascending or descending order.
+    - Syntax: `SELECT column1, column2, ... FROM table_name ORDER BY column_name ASC|DESC;`
+
+These are some of the basic SQL syntax elements. SQL is a rich and versatile language with many more advanced features and statements available.
+
+===========
+Linux commands-
+===========
+Here are some commonly used commands in Linux:
+
+1. `ls`: List files and directories.
+2. `cd`: Change directory.
+3. `pwd`: Print the current working directory.
+4. `mkdir`: Create a new directory.
+5. `rm`: Remove files and directories.
+6. `cp`: Copy files and directories.
+7. `mv`: Move or rename files and directories.
+8. `cat`: Concatenate and display file contents.
+9. `grep`: Search for patterns in files.
+10. `chmod`: Change file permissions.
+11. `chown`: Change file ownership.
+12. `ssh`: Securely connect to a remote server.
+13. `sudo`: Execute a command with administrative privileges.
+14. `man`: Display the manual page of a command.
+15. `tar`: Archive and extract files.
+16. `wget`: Download files from the web.
+17. `top`: Display system resource usage.
+18. `ps`: List running processes.
+19. `kill`: Terminate processes.
+20. `ping`: Test network connectivity.
+
+These are just a few examples of commonly used commands. Linux has a rich set of commands available, and their usage may vary depending on your specific needs and the distribution of Linux you are using.

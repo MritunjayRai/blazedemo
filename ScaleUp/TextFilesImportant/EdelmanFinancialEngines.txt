@@ -1,0 +1,242 @@
+Questions from Edelman Financial Engines
+1- Local variables, instance variables and static variables
+2- write the code to launch the web browser
+3- code to reverse the string and count the numbers in string
+4- what are methods there to iterate over SET and MAP
+5- different phases of srum in agile
+7- what is agile methadology
+8- what is diference between put and patch
+9- types of construtors in java
+10- java collection- difference between LIST and SET
+11- wait types in selenium
+12- CICD tools used, such as jenkins, git actions and azure pipeline
+13- what is difference between driver.navigateTo() and get() 
+In the context of Selenium WebDriver, there is no `navigateTo()` method or `driver.navigateTo()` method. The correct methods are `navigate().to()` and `get()`.
+
+1. `navigate().to()` and `get()` methods:
+   - `navigate().to(url)` and `get(url)` methods are used to navigate to a specific URL in the browser.
+   - Both methods perform the same action of opening the specified URL in the browser.
+   - For example, `driver.navigate().to("https://www.example.com")` and `driver.get("https://www.example.com")` will open the "https://www.example.com" URL in the browser.
+
+However, there is a difference in how these methods behave in certain scenarios:
+
+- `get(url)` method:
+   - `get(url)` method is a blocking call, which means that it waits for the page to fully load before proceeding to the next line of code.
+   - If the page load takes a long time or encounters an error, the execution of the script may be delayed or halted.
+   - This method is commonly used for initial navigation to a URL or when you want to ensure that the page is fully loaded before performing further actions.
+
+- `navigate().to(url)` method:
+   - `navigate().to(url)` method is a non-blocking call, which means that it does not wait for the page to fully load before proceeding to the next line of code.
+   - It allows you to navigate to a new URL while the previous page is still loading or performing other actions.
+   - This method is useful when you want to navigate to a new page without waiting for the previous page to completely load.
+   - It can also be used for navigating back and forward in the browser history using `navigate().back()` and `navigate().forward()` methods.
+
+To summarize, `navigate().to(url)` and `get(url)` methods are used to navigate to a specific URL in Selenium WebDriver. `get(url)` is a blocking call that waits for the page to load, while `navigate().to(url)` is a non-blocking call that allows for navigation without waiting for the page to fully load.
+
+14- different methods of navigateTo()
+In Selenium WebDriver, the `navigate().to()` method is used to navigate to a specific URL in the browser. It is part of the Navigation interface in Selenium. Here are the different methods available in `navigate().to()`:
+
+1. `navigate().to(url)`:
+   - This method is the basic usage of `navigate().to()` and is used to navigate to the specified URL.
+   - Example: `driver.navigate().to("https://www.example.com");`
+
+2. `navigate().back()`:
+   - This method is used to navigate back to the previous page in the browser history.
+   - Example: `driver.navigate().back();`
+
+3. `navigate().forward()`:
+   - This method is used to navigate forward to the next page in the browser history.
+   - Example: `driver.navigate().forward();`
+
+4. `navigate().refresh()`:
+   - This method is used to refresh the current page in the browser.
+   - Example: `driver.navigate().refresh();`
+
+These methods provide navigation capabilities to move between different pages in the browser's history. By using these methods, you can simulate user interactions and control the flow of navigation during automated testing or web scraping tasks.
+
+Here's an example that demonstrates the usage of these methods:
+
+```java
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class NavigationExample {
+    public static void main(String[] args) {
+        // Set the path to the chromedriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Create an instance of ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Navigate to a specific URL
+        driver.navigate().to("https://www.example.com");
+
+        // Perform some actions on the page
+
+        // Navigate back to the previous page
+        driver.navigate().back();
+
+        // Navigate forward to the next page
+        driver.navigate().forward();
+
+        // Refresh the current page
+        driver.navigate().refresh();
+
+        // Close the browser
+        driver.quit();
+    }
+}
+```
+
+In the above example, the WebDriver navigates to "https://www.example.com", then goes back to the previous page, moves forward to the next page, and finally refreshes the current page before quitting the browser.
+
+By utilizing these methods, you can create more interactive and dynamic test scripts or automate web browsing tasks effectively using Selenium WebDriver.
+
+15- different methods of switch
+In Selenium WebDriver, there are different methods available to switch between different frames, windows, and alerts. Here are the commonly used methods for switching:
+
+1. `driver.switchTo().frame()`:
+   - This method is used to switch the WebDriver's focus to a frame within the current page.
+   - It accepts various parameters to identify the frame, such as frame index, frame name or ID, or a WebElement representing the frame.
+   - Example: `driver.switchTo().frame("frameName");` or `driver.switchTo().frame(0);`
+
+2. `driver.switchTo().parentFrame()`:
+   - This method is used to switch the WebDriver's focus back to the parent frame.
+   - It is used when you need to navigate out of a nested frame and return to the previous frame.
+   - Example: `driver.switchTo().parentFrame();`
+
+3. `driver.switchTo().defaultContent()`:
+   - This method is used to switch the WebDriver's focus back to the default content (main page) from within a frame.
+   - It is used when you want to navigate out of all frames and interact with elements on the main page.
+   - Example: `driver.switchTo().defaultContent();`
+
+4. `driver.switchTo().window()`:
+   - This method is used to switch the WebDriver's focus to a different window or tab.
+   - It accepts the window handle as a parameter to identify the window to switch to.
+   - Example: `driver.switchTo().window("windowHandle");`
+
+5. `driver.switchTo().alert()`:
+   - This method is used to switch the WebDriver's focus to an alert dialog.
+   - It is used to handle JavaScript alert boxes, confirmation dialogs, or prompt dialogs.
+   - Example: `Alert alert = driver.switchTo().alert();`
+
+These methods allow you to navigate and interact with different frames, windows, and alerts during test automation. By using the appropriate switch methods, you can ensure that your WebDriver interacts with the desired context within the web application.
+
+16- SQL- types of Joins - also check few basic syntax
+17- what is the difference between out join and inner join
+18- what is STLC with full explainnation
+19- what defect life cycle also explain in JIRA
+20- Difference between StringBuilder and StringBuffer - synchonization and thread safety
+21- how many objectes will get created for local, instance and static variables
+The number of objects created for local, instance, and static variables depends on the specific context and usage within a Java program. Here's an explanation of how objects are created for each type of variable:
+
+1. Local Variables:
+   - Local variables are declared and used within a method, constructor, or block.
+   - Each time the method, constructor, or block is executed, a new set of local variables is created.
+   - Objects are created explicitly using the `new` keyword or implicitly when a method or constructor returns an object.
+   - The objects created within the method or block are eligible for garbage collection once the method or block completes execution.
+   - The number of objects created for local variables depends on how many times the method, constructor, or block is executed.
+
+2. Instance Variables:
+   - Instance variables are declared within a class but outside of any method, constructor, or block.
+   - Each instance of the class (i.e., each object) has its own copy of instance variables.
+   - Objects are created explicitly using the `new` keyword when an instance of the class is instantiated.
+   - The number of objects created for instance variables depends on how many instances of the class are created.
+
+3. Static Variables:
+   - Static variables are declared with the `static` keyword and are shared among all instances of a class.
+   - Static variables are associated with the class itself, rather than with individual objects.
+   - Objects are created explicitly using the `new` keyword when an instance of the class is instantiated.
+   - The number of objects created for static variables depends on how many instances of the class are created.
+
+To summarize:
+- Local variables create new objects each time a method, constructor, or block is executed.
+- Instance variables create separate objects for each instance of the class.
+- Static variables are not directly associated with objects but are shared among all instances of the class.
+
+The actual number of objects created for local, instance, and static variables will vary depending on the specific program logic and execution flow.
+
+==============
+Certainly! Here's a tabular representation of the number of objects created for local, instance, and static variables:
+
+| Variable Type   | Number of Objects Created                                   |
+|-----------------|-----------------------------------------------------------|
+| Local Variables | Multiple instances can be created, depending on execution flow and method/block invocations. Each method/block execution creates a new set of local variables. |
+| Instance Variables | One instance per object created. Each instance of the class has its own copy of instance variables. |
+| Static Variables | One instance shared across all instances of the class. Static variables are not directly associated with objects but with the class itself. |
+
+It's important to note that the number of objects created for local variables depends on how many times the method or block is executed. For instance variables, the number of objects created depends on the number of instances of the class created. Static variables, on the other hand, are not directly associated with object instances but are shared among all instances of the class.
+
+Keep in mind that this table provides a general overview, and the actual number of objects created can vary based on the specific implementation and usage in a Java program.
+
+22- Your approach to start the testing
+23- Microservice arhitechtecture
+In a typical microservice architecture, the different layers of a microservice can include:
+
+1. Presentation Layer: Responsible for handling user interactions, including handling HTTP requests, input validation, and user interface components.
+
+2. API Layer: Exposes APIs or endpoints that allow external services or clients to interact with the microservice. This layer handles the translation of requests and responses between the external world and the microservice.
+
+3. Service Layer: Implements the business logic of the microservice. It handles the processing of requests, performs necessary computations or operations, and orchestrates interactions with other services or data sources.
+
+4. Data Access Layer: Handles the interaction with data sources, such as databases or external APIs. It is responsible for retrieving and persisting data required by the microservice.
+
+5. Infrastructure Layer: Provides infrastructure-related components and services, such as logging, monitoring, caching, security, and configuration management. This layer supports the functionality and operational aspects of the microservice.
+
+6. External Service Integrations: Microservices often need to interact with other services or systems. This layer handles the integration with external services, such as payment gateways, email services, or third-party APIs.
+
+It's important to note that the exact layers and their names may vary depending on the specific implementation and architectural choices. The layers mentioned above provide a general overview of the common components and responsibilities found in a microservice architecture.
+
+24- 3 tier architecture
+
+Three-tier architecture, also known as multi-tier architecture, is a software architecture pattern that divides an application into three logical and separate layers: presentation layer, application or business logic layer, and data storage layer. Each layer has specific responsibilities and interacts with the other layers through well-defined interfaces. The three tiers are as follows:
+
+1. Presentation Layer (User Interface Layer):
+   - Responsible for the user interface and user interactions.
+   - Presents information to the users and collects user inputs.
+   - Handles user input validation and rendering of the user interface.
+   - May include components like web browsers, mobile apps, or desktop applications.
+
+2. Application or Business Logic Layer:
+   - Contains the application logic and processes the user requests.
+   - Implements the business rules and workflows of the application.
+   - Performs data validation, transformation, and calculations.
+   - Handles user authentication, authorization, and session management.
+   - Communicates with the data storage layer and external services.
+   - Often implemented as a set of APIs or services.
+
+3. Data Storage Layer:
+   - Stores and manages the application data.
+   - Includes databases, file systems, or other data storage mechanisms.
+   - Handles data retrieval, storage, modification, and deletion.
+   - May involve data caching and transaction management.
+   - Provides an interface for the application layer to interact with the data.
+
+The three-tier architecture provides separation of concerns, modularity, and scalability. It allows for easier maintenance and development as each layer can be updated or modified independently without affecting the other layers. It also enables better resource utilization, as different layers can be scaled independently based on demand.
+
+In practice, the three-tier architecture can be implemented using various technologies and frameworks, such as web servers, application servers, APIs, databases, and client-side technologies. The specific design and components within each layer may vary based on the requirements and technologies chosen for the application.
+
+35- what is clinet server architecture
+Client-server architecture is a network architecture model where computing tasks or services are divided between client devices and server systems. In this model, the client (also referred to as the front-end or requester) is a device or software application that requests services or resources from the server (also known as the back-end or provider) over a network.
+
+Here are the key components and characteristics of client-server architecture:
+
+1. Client: The client is the end-user device or software application that initiates requests for services or resources. It can be a computer, mobile device, web browser, or any other device that interacts with the user.
+
+2. Server: The server is a powerful computer or system that provides services or resources to clients. It responds to client requests, processes data, and performs tasks on behalf of clients.
+
+3. Communication: The client and server communicate with each other over a network using protocols such as HTTP, TCP/IP, or other network protocols. The client sends requests to the server, and the server sends back responses containing the requested data or resources.
+
+4. Request-Response Model: The client sends a request to the server, specifying the desired service or resource. The server processes the request, performs necessary operations, and sends back a response containing the requested data or an acknowledgment of the action performed.
+
+5. Scalability: The client-server architecture allows for scalability by enabling multiple clients to connect to a single server or distribute the workload across multiple servers. This allows for efficient resource utilization and handling of increasing client demands.
+
+6. Centralized Resources: The server typically hosts and manages centralized resources such as databases, files, or application logic. Clients can access and utilize these shared resources as needed.
+
+7. Security: Client-server architecture allows for implementing security measures at the server level, protecting the shared resources and controlling access to sensitive data.
+
+8. Independence: Clients and servers can be developed independently, using different technologies and platforms. This allows for flexibility and specialization in the design and implementation of client and server components.
+
+Client-server architecture is widely used in various applications, including web applications, database management systems, email servers, and file-sharing systems. It provides a scalable and efficient approach to distribute computing tasks, manage resources, and enable communication between clients and servers over a network.
+
+

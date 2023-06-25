@@ -1,0 +1,266 @@
+1- can we use Robot keyword and run our test in selenium if yes can we do in jenkins(any CI tools)
+2- consider a web table which is dynamic in nature, how we will locate the element which is in 4th column and 3rd row.
+3- How we will handle cookies in selenium or how we will store the cookies in our next test case
+4- How do we handle authenticate pop up
+5- what is out of memory error in java
+6- how do we run only failed test cases in BDD cucumber or any other framewrork.
+7- What is strict in BDD cucumber
+8- name few interface which you have used in selenium and there function
+9- name few abstract methods which you have used in selenium framewrork and their functionality
+10- name few implementation classes used in selenium and there functionality
+11- what are the annotations hairarchy in testNG
+12- what are the datatables in BDD cucumber, tell various methods by which datatables can be implemented in BDD cucumber.
+13- how to achieve the parellel run in selenium using BDD cucumber (if not only parellel run in selenium
+14- what are the challenges you faced in api testing
+15- what is 429 error in api testing and when we will get it
+16- when we will get stale element exception and how to avoid it
+17- How to resolve the conflict in GIT
+18- what is the difference between webdriver and remote driver
+19- what are the different authorization in API
+20- Difference between authorization and authentication
+21- how to take screenshot in selenium and and how you are taking in BDD
+22- Which reporting tool you have used in BDD cucmumber and how you have integrated this in your framewrork
+23- How you veifry the colour of the text in selenium
+24- What is the difference between datatables and scenario outline in BDD cucmber
+25- You have a scenario, a background and a hook, tell me the order in which it will execute in BDD
+26- How to run one step multiple times in cucumber and one test case multiple time in BDD cucumber
+27- how to type in selenium with using sendkeys
+28- What are the soft asserts and hard asserts in selenium
+29- what is switch in selenium, whether its interface or class or methods
+30- How do we set the size of browser windows in selenium
+31- name a method where we are using method overloading and method overriding in selenium
+32- what id the difference between XSSF and HSSF or xls and xlsx, where do we use in selenium( performance wise which one will be faster
+33- How do you conducted cross browser testing in you project in selenium
+34- Explain one scenario which you cannot automate in your selenium project
+35- ChromeDriver driver = new ChromeDriver(); explain this
+36- how to run tests in incognito mode using selenium
+37- what is CICD and how you achieved using jenkins, git actions or azure pipeline
+
+
+1- how driver.get() works internally
+2- Give one API and ask the scenario (they should cover positive and focus in negative) (API -GET/{domainName}/employee?emplooyeeID=1234)
+3- What will happen if we make constructor as final
+4- what are the different mvn command and gradle command which you have worked
+5- How would you disable alerts in selenium
+6- difference between thread.start() and thread.run()
+7- Can we use POST instead of PUT if yes then what will happen
+8- what are the issues you have observed while doing the API testing
+9- how do you implement CI tools to integrate the API testing ( CI tools such as Jenkins)
+10- what are the pojo and model classes in terms of api automation testing using rest assured
+11- what is sonarqube and sonarlint. give one example of an issue which we can get while scanning the code
+12- how to call both the constructor(parameterized and no-arg constructor) using single instance of the class
+13- how to you launch the browser in your selenium framework ( dont expect the answer to initialize the driver)
+14- how you have achieved data driven in your framework
+15- have you verified the email using the selenium if yes then how
+16- How to upload the textfile in selenium
+17- How to download the file using selenium
+
+ program-
+ 
+1- remove the duplicates in the string without using any inbuilt API (basically without using list or any other collection)
+2- password validation (for eg a string contains a special char, alphabets, 2 numeric digit and lenght should be of 10 characters)
+3- write the code to read the value from excel sheet
+4- write the code find the Longest palindrome in given string
+ Input = "babad"
+ output = "bab"
+ note "aba" is also a valid answer
+5- 
+str1 = Maersk Global Service Center Maersk Center Global Service Global Service Global Maesrk
+O/p = Maersk =3, Global=4, Service=3, Center=2
+
+str1 = Maersk Global Service Center
+str2= esr
+o/p = Mak Global vice Cnt
+o/p = Maersk labolG Service retneC
+
+
+6- Method:POST
+   url: some url
+   {
+   "credentials": {
+   "name": "administrator",
+   "password": "passw0rd",
+   "site": {
+   "contentUrl": ""
+   }
+   }
+   }
+ Exception
+
+7- ----dropdownFruits-----
+Mango
+Apple
+Banana
+Mango
+Orange
+Apple
+Kiwi
+Litchi
+Assert that Kiwi is present
+
+8- Authentication pop up
+ sendkeys is hidden
+9- can we use POST instead of PUT if yes then what will happen
+10- what is stale element exception, when we will get it and how to avoid it
+11- what is Build tool and which all tools you have used in your automation code
+12- Explain your frameword and code
+13- TPS is higher, how to deal it in API Testing
+14- How to map connection
+
+
+Java-
+1- collection framework in Java
+   1.1- Difference between List and Set interface
+   1.2- Difference between all the classes which implements List interface
+   1.3- Difference between all the classes which implements Set interface
+   1.4 Few scenarios based question from collection Framework
+2- Maps in java
+   2.1- Difference between all the classes which implement map interface
+   2.2- Few scenarios based question from Maps
+3- OOPS concept in Java and ther usage
+4- What is difference between Error and Exception in java and how to handle them
+5- Super vs this
+6- Examples of polymorphism
+7- Difference between abstract and interfaces
+8- Types of access modfiers - examples
+9- Types of variables in java
+10- Static vs non static
+11- Why main is static in java
+12- why overriding is not possible with static
+13- Can static method be overloaded
+14- Can abstract class be final
+
+
+API-
+1- List top 10 different API status codes and when does it occur
+2- difference between the different http methods (GET,POST,PUT,PATCH,DELETE)
+3- what are the different types of authorization and their differences in API testing
+4- candidate must know to automate http method using any tools/technology
+5- Different tools used in API testing manual and automation testing
+6- what are the differences between SOAP and REST API
+
+Selenium-
+1- Different interfaces used in Selenium and its usage
+2- Different locators used in selenium and handsOn
+3- Different wait times in selenium and its usage
+4- few scenario based questions in selenium
+
+Framework-
+1- A candidate must explain the framework in which he has worked
+2- About the reporting tools which is used in framework
+
+Programming-
+1- problem related to Map(eg- finding the maximum occurance)
+2- problems related to collection framework and its realtime scenarios  
+3- Anagram - check if the strings are Anagram.
+4- FibonacciSeries
+5- RemoveDuplicateChar  - from strings
+6- CountDuplicateWords - in a given sentence
+7- SplitStringAndReverse
+8- SecondHighestElement  - in an unsorted array
+9- ReturnIndexOfSubarrayEquallingTarget
+10- Print0To100WithoutLoop 
+   
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
