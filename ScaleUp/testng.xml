@@ -2,7 +2,7 @@
 <suite name="My Test Suite">
     <test name="My Test">
         <classes>
-            <class name="JavaTest.TestNgClass"/>
+            <class name="Pragramming.TestNgClass"/>
         </classes>
     </test>
 </suite>
