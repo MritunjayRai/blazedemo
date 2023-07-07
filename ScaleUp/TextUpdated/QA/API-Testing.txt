@@ -1,0 +1,380 @@
+==================================
+1- what are the challenges you faced in api testing
+==================================
+
+Understanding API specifications: APIs are often documented using specifications like OpenAPI (formerly known as Swagger) or RAML. One of the challenges is to thoroughly understand the API specifications to ensure accurate testing.
+
+Handling authentication and authorization: APIs may require authentication mechanisms such as API keys, OAuth, or JWT tokens. Testing APIs with different authentication methods and handling authorization can be complex.
+
+Managing test data: APIs often require specific test data or use different data formats like JSON or XML. Creating and managing test data can be challenging, especially when dealing with complex data structures or large datasets.
+
+Testing different request methods: APIs support various HTTP methods such as GET, POST, PUT, PATCH, DELETE, etc. Testing each method with different scenarios and payloads requires careful consideration.
+
+Handling error conditions: APIs need to handle and respond to error conditions appropriately. Testing error scenarios, such as invalid requests, incorrect parameters, or server errors, is crucial to ensure the API behaves as expected.
+
+Data validation and verification: APIs return data that needs to be validated against expected results. Verifying responses, checking status codes, headers, and validating data formats can be challenging, especially when dealing with large datasets.
+
+Handling rate limits and performance: APIs may have rate limits or performance constraints that need to be considered during testing. Testing the API's performance, response time, and handling rate limits can pose challenges.
+
+Integration with third-party systems: APIs often integrate with other third-party systems, and testing these integrations requires coordination with multiple teams and ensuring the compatibility of systems.
+
+Versioning and backward compatibility: APIs evolve over time, and maintaining backward compatibility while testing different API versions can be a challenge. It requires careful planning and handling of version-specific test scenarios.
+
+Documentation accuracy and consistency: Sometimes, API documentation may not accurately reflect the actual API behavior or may lack necessary details. Relying on inaccurate or incomplete documentation can pose challenges during testing.
+
+
+
+=====================================
+2- what is 429 error in api testing and when we will get it
+=====================================
+
+A 429 error in API testing refers to the "Too Many Requests" status code. It indicates that the user has sent too many requests within a given time frame, exceeding the rate limit set by the server or API.
+
+The 429 error is typically used by servers or APIs to limit the number of requests from a client or user in order to prevent abuse, protect the server's resources, or ensure fair usage. When a client exceeds the rate limit, the server responds with a 429 status code to indicate that further requests cannot be processed until the rate limit is reset.
+
+Some common scenarios when you might encounter a 429 error in API testing are:
+
+Rate limiting: When an API has a rate limit in place, exceeding the allowed number of requests per minute or per hour will result in a 429 error. This helps to prevent abuse and ensure fair usage of the API.
+
+API key or token limits: APIs that require authentication through API keys or tokens may enforce limits on the number of requests per key/token. If you exceed this limit, you may receive a 429 error.
+
+Concurrency limits: Some APIs may impose concurrency limits, restricting the number of simultaneous requests from a single client or user. When this limit is exceeded, a 429 error may be returned.
+
+Temporary server overload: In certain cases, a server may be experiencing temporary overload or high traffic, leading to a 429 error as a way to manage the load and ensure optimal performance for all users.
+
+When you encounter a 429 error during API testing, it's important to handle it appropriately. You may need to implement retry mechanisms with backoff strategies, respect the rate limits set by the API, or adjust your testing approach to ensure compliance with the API's usage policies.
+
+==============================
+3- what are the different authorization in API
+==============================
+
+API Keys: API keys are unique identifiers that are used to authenticate and authorize API requests. Each client or user is assigned a specific API key, which is included in the request headers or query parameters. API keys are typically used for simple authentication and to track usage limits.
+
+OAuth (Open Authorization): OAuth is a widely adopted protocol for authorization. It enables delegated access to APIs on behalf of a user without sharing their credentials. OAuth involves multiple parties: the client application, the API provider, and the user. The user grants permission to the client application, which receives an access token to make authorized API requests on behalf of the user.
+
+Bearer Tokens: Bearer tokens are short-lived access tokens that are issued by an authorization server after successful authentication. The token is included in the Authorization header of API requests as a "Bearer" token. Bearer tokens provide authorization and access control to protected resources.
+
+Basic Authentication: Basic authentication is a simple authentication mechanism where the client includes a username and password in the request headers using the Authorization header field. The credentials are typically Base64 encoded. However, basic authentication is considered less secure than other methods since the credentials are sent with each request.
+
+Digest Authentication: Digest authentication is similar to basic authentication but provides improved security. The client includes a username and password in the request headers, but the password is not sent in plain text. Instead, it is hashed using a one-way hash function, making it harder for an attacker to intercept and decode the credentials.
+
+Token-Based Authentication: Token-based authentication involves issuing and validating tokens to authenticate API requests. Tokens can be in the form of JSON Web Tokens (JWT), which are digitally signed and contain user-specific claims. Tokens are typically included in the request headers as a means of authorization.
+
+Custom Authentication: API providers may implement custom authentication mechanisms specific to their requirements. This can involve generating and verifying custom tokens, using encryption and decryption techniques, or integrating with other authentication frameworks.
+
+It's important to choose the appropriate authorization method based on the security requirements and the capabilities provided by the API provider. The specific implementation and usage of these authorization methods may vary depending on the API framework or technology being used.
+
+
+
+=====================================
+4- Difference between authorization and authentication
+=====================================
+
+Authorization and authentication are two distinct concepts in the field of security and access control. Here's the difference between them:
+
+Authentication: Authentication is the process of verifying the identity of a user or entity. It ensures that the user or entity is who they claim to be. Authentication answers the question, "Who are you?" It involves providing credentials, such as a username and password, to prove one's identity. The goal of authentication is to establish trust and grant access to authorized individuals or entities. Common authentication methods include username/password authentication, biometric authentication, multi-factor authentication (MFA), etc.
+
+Authorization: Authorization is the process of granting or denying access rights and permissions to authenticated users or entities. Once a user or entity is authenticated, authorization determines what actions they are allowed to perform or what resources they can access. Authorization answers the question, "What are you allowed to do?" It ensures that authenticated users have appropriate privileges and restrictions based on their role, permissions, or other criteria. Authorization can be based on user roles, access control lists (ACLs), or other policies defined by the system.
+
+In summary, authentication is about verifying identity, while authorization is about granting or denying access based on that verified identity. Authentication establishes trust, while authorization controls what an authenticated user or entity can do within a system or application.
+
+It's important to implement both authentication and authorization mechanisms to ensure proper security and access control in applications and systems. Without authentication, it is impossible to verify the identity of users, while without authorization, there is no control over what actions those authenticated users can perform.
+
+
+
+================================================================================================
+5- Give one API and ask the scenario (they should cover positive and focus in negative) (API -GET/{domainName}/employee?emplooyeeID=1234)
+================================================================================================
+
+API: GET /{domainName}/employee?employeeID=1234
+
+Scenario 1: Positive Scenario (Valid Employee ID)
+
+Description: The API is called with a valid employee ID, and the expected behavior is to return the details of the employee.
+Request: GET /acme/employee?employeeID=1234
+Expected Response: 200 OK with the employee details in the response body.
+Scenario 2: Negative Scenario (Invalid Employee ID)
+
+Description: The API is called with an invalid or non-existent employee ID, and the expected behavior is to return an appropriate error response.
+Request: GET /acme/employee?employeeID=9999
+Expected Response: 404 Not Found with an error message indicating that the employee with the given ID does not exist.
+These scenarios cover both the positive case where a valid employee ID is provided, and the negative case where an invalid employee ID is provided. The positive scenario ensures that the API returns the expected employee details, while the negative scenario verifies that the API handles non-existent employee IDs gracefully by returning a meaningful error response.
+
+
+==========================================
+6- Can we use POST instead of PUT if yes then what will happen
+==========================================
+
+Yes, it is technically possible to use a POST request instead of a PUT request in certain scenarios. However, the semantics and intended use of the two HTTP methods are different, and using them interchangeably may have unintended consequences.
+
+PUT method: The PUT method is typically used to update or replace an existing resource at a specific URL. It is idempotent, meaning that multiple identical PUT requests should have the same effect as a single request. By using PUT, you are indicating that you want to update the resource at the specified URL.
+
+POST method: The POST method, on the other hand, is primarily used to submit data to be processed by a resource, often resulting in the creation of a new resource. POST requests are not idempotent, meaning that multiple identical POST requests may have different effects each time they are executed. By using POST, you are indicating that you want to create a new resource or trigger a non-idempotent action on the server.
+
+If you use a POST request instead of a PUT request to update a resource, the behavior will depend on how the server handles the request. Some servers may interpret the POST request as a creation of a new resource rather than an update, leading to the creation of duplicate resources or unexpected behavior.
+
+To ensure proper API design and adherence to HTTP semantics, it is recommended to use the appropriate HTTP method for the intended operation. Use PUT when you want to update or replace an existing resource, and use POST when you want to create a new resource or trigger a non-idempotent action.
+
+
+
+=============================================
+7- what are the issues you have observed while doing the API testing
+==============================================
+
+While conducting API testing, several common issues and challenges can arise. Here are some issues that are frequently encountered during API testing:
+
+Invalid or missing input validation: APIs should validate the incoming data and respond with appropriate error messages if the input is invalid or missing. However, some APIs may lack proper input validation, leading to unexpected behavior or security vulnerabilities.
+
+Inconsistent or insufficient error handling: APIs should provide meaningful error responses for various scenarios. However, inconsistent or insufficient error handling can make it difficult to troubleshoot issues and understand the root cause of failures.
+
+Security vulnerabilities: APIs that are not adequately secured can be susceptible to various security threats, such as unauthorized access, injection attacks, or cross-site scripting (XSS). It is essential to thoroughly assess and validate the security aspects of the API.
+
+Performance issues: APIs may encounter performance issues when handling a large volume of requests, resulting in slow response times or timeouts. It is crucial to test APIs under different load conditions to identify and address any performance bottlenecks.
+
+Versioning and backward compatibility: APIs may undergo changes over time, including updates, additions, or removal of endpoints or fields. Maintaining backward compatibility and managing different versions of the API can be challenging, especially when clients rely on specific versions or when handling requests from different clients.
+
+Authentication and authorization: APIs that require authentication and authorization need to be properly tested to ensure that access controls and permissions are enforced correctly. Testing various scenarios, such as different user roles or permissions, can help uncover potential issues.
+
+Concurrency and synchronization: In multi-threaded or concurrent API usage scenarios, issues related to race conditions, synchronization, or thread safety may arise. It is important to consider these aspects and design tests that simulate concurrent API usage.
+
+Documentation discrepancies: Sometimes, the API documentation may not accurately reflect the actual behavior or may lack necessary details. This can lead to confusion or misunderstandings during testing and integration.
+
+To mitigate these issues, it is crucial to have a comprehensive test strategy, including functional testing, security testing, performance testing, and proper documentation. Collaborating closely with development teams and following best practices for API design and testing can help address these challenges effectively.
+
+
+=============================================================
+8- what are the pojo and model classes in terms of api automation testing using rest assured
+=============================================================
+
+In API automation testing using RestAssured or any other framework, POJO (Plain Old Java Object) and model classes are used to represent the request and response payloads of the API.
+
+POJO Class:
+A POJO class is a simple Java class that encapsulates data and provides getters and setters for accessing and modifying that data. In API testing, a POJO class is typically used to represent the request payload or the response payload of an API. It maps the JSON/XML structure of the payload to Java objects, making it easier to work with the data.
+
+For example, consider an API that accepts a JSON payload with fields like name, age, and email. You can create a POJO class called "User" with instance variables for name, age, and email, along with their corresponding getters and setters. This class represents the structure of the request payload.
+
+Model Class:
+A model class, also known as a response model or response object, is used to represent the response received from an API. It captures the structure of the response payload and provides methods to access the data within the response.
+
+For example, if an API returns a JSON response with fields like id, name, and email, you can create a model class called "UserResponse" with instance variables for id, name, and email, along with their corresponding getters and setters. This class represents the structure of the response payload.
+
+By using POJO and model classes, you can easily serialize/deserialize JSON or XML data to Java objects, manipulate the data, and perform assertions on the response. RestAssured provides features to directly serialize/deserialize JSON/XML payloads to and from POJO or model classes, simplifying the handling of API data.
+
+Overall, POJO and model classes in API automation testing provide a structured and object-oriented approach to handle the request and response payloads, improving code readability and maintainability.
+
+
+======================
+9- Method:POST
+   url: some url
+   {
+   "credentials": {
+   "name": "administrator",
+   "password": "passw0rd",
+   "site": {
+   "contentUrl": ""
+   }
+   }
+   }
+ Exception
+======================
+Based on the provided information, it seems that you are encountering an exception while performing a POST request to a specific URL. In order to diagnose and resolve the issue, it would be helpful to know the specific details of the exception that you are experiencing.
+
+Exceptions in API requests can occur due to various reasons such as network issues, incorrect URL, authentication problems, server-side errors, or issues with the request payload.
+
+To provide a more accurate solution, please provide the specific exception details or any error messages that you are receiving. Additionally, any additional context or logs related to the exception would be helpful in understanding the problem and suggesting a resolution.
+
+
+
+
+==========================================
+10- can we use POST instead of PUT if yes then what will happen
+==========================================
+
+
+===============================
+11- TPS is higher, how to deal it in API Testing
+================================
+
+When the TPS (Transactions Per Second) is higher in API testing, it can put a strain on the system under test and impact the performance and stability of the application. To deal with high TPS in API testing, you can consider the following approaches:
+
+Performance Testing: Perform load testing and stress testing to simulate high TPS scenarios and identify the breaking points of the system. This helps in understanding the system's capacity and ensuring it can handle the expected load.
+
+Distributed Testing: Distribute the load across multiple machines or servers to simulate a higher TPS. This can be achieved by setting up a distributed testing environment using tools like JMeter or Gatling. By distributing the load, you can generate a higher TPS and assess the system's performance under such conditions.
+
+Throttling: Implement throttling mechanisms in your test scripts to control the rate of API requests. Throttling limits the number of requests sent per second to match the desired TPS. This helps in maintaining a consistent load on the system and avoids overwhelming it with excessive requests.
+
+Rate Limiting: If the system under test has built-in rate limiting capabilities, configure it to limit the number of API requests per second. This ensures that the system can handle requests within its specified limits and avoids overloading.
+
+Optimize Test Scripts: Analyze and optimize your test scripts to minimize unnecessary delays or waiting time between requests. This helps in maximizing the throughput and reducing the overall response time.
+
+Monitoring and Analysis: Monitor the system metrics, such as response time, CPU usage, memory utilization, and network traffic during high TPS testing. Analyze the performance data to identify any bottlenecks, performance issues, or areas that need optimization.
+
+Scalability Testing: Test the system's scalability by gradually increasing the TPS and observing how the system scales up to handle the load. This helps in determining the system's ability to handle increasing TPS without significant degradation in performance.
+
+By applying these approaches, you can effectively deal with higher TPS in API testing and ensure that the system performs optimally under various load conditions. It is essential to identify the system's limitations, optimize performance, and validate its scalability to deliver a reliable and high-performing API.
+
+
+12- List top 10 different API status codes and when does it occur
+==========================================
+
+200 OK: This status code indicates a successful request, meaning the server processed the request and returned the expected response data. It is commonly used for GET, POST, PUT, and DELETE operations.
+
+201 Created: This code is used when a new resource is successfully created as a result of a POST request. The server should include the location of the newly created resource in the response headers.
+
+400 Bad Request: It indicates that the server could not understand the client's request due to malformed syntax, missing parameters, or other client-side errors. It can occur when the request is not properly formed or violates server constraints.
+
+401 Unauthorized: This status code indicates that the client must authenticate itself to access the requested resource. It usually occurs when the client lacks valid authentication credentials or has provided invalid ones.
+
+403 Forbidden: It signifies that the server understood the request, but refuses to authorize it. This can happen when the client does not have sufficient permissions to access the requested resource.
+
+404 Not Found: This status code is returned when the requested resource is not found on the server. It commonly occurs when a URL or endpoint does not exist or when a specific resource cannot be located.
+
+500 Internal Server Error: This code indicates that an unexpected condition occurred on the server, preventing it from fulfilling the request. It can occur due to server misconfiguration, bugs, or issues with the server-side code.
+
+502 Bad Gateway: This error code indicates that the server, acting as a gateway or proxy, received an invalid response from an upstream server while attempting to fulfill the request.
+
+503 Service Unavailable: This error code indicates that the server is temporarily unavailable or overloaded. It could occur during maintenance, server upgrades, or high traffic periods. The client can retry the request after some time.
+
+504 Gateway Timeout: This error code indicates that the server, acting as a gateway or proxy, did not receive a timely response from an upstream server while trying to fulfill the request.
+
+301 Moved Permanently: It is used for permanent URL redirection. When a server returns this code, it informs the client that the requested resource has been moved to a new location permanently.
+
+204 No Content: This status code indicates that the server successfully processed the request, but there is no additional content to send back in the response payload. It is often used for successful DELETE operations or for requests that don't require a response body.
+
+These are just a few of the many status codes defined in the HTTP specification. Understanding and handling different status codes can help you diagnose and resolve issues when working with APIs.
+
+
+=====================================================
+13- difference between the different http methods (GET,POST,PUT,PATCH,DELETE)
+=====================================================
+
+The HTTP methods, also known as HTTP verbs, specify the type of action to be performed on a resource. Here's a brief explanation of the differences between the most commonly used HTTP methods:
+GET: The GET method is used to retrieve a representation of a resource from the server. It should be used for safe, idempotent operations, meaning that multiple identical requests should have the same effect as a single request. GET requests should not have any side effects on the server or modify data.
+
+POST: The POST method is used to submit data to the server to create a new resource. It is non-idempotent, meaning that multiple identical requests may have different effects. POST requests typically include a request body containing the data to be processed by the server.
+
+PUT: The PUT method is used to update or replace an existing resource on the server. It replaces the entire resource with the updated data provided in the request body. PUT requests are idempotent, as repeated identical requests should have the same effect as a single request.
+
+PATCH: The PATCH method is used to partially update an existing resource on the server. It allows modifying specific fields or properties of a resource without replacing the entire representation. The request body contains only the changes to be applied. Like PUT, PATCH requests are idempotent.
+
+DELETE: The DELETE method is used to remove a specified resource from the server. It instructs the server to delete the resource identified by the given URL. DELETE requests are idempotent, as deleting a resource multiple times has the same effect as deleting it once.
+
+In summary, GET is used to retrieve data, POST is used to create new resources, PUT is used to replace entire resources, PATCH is used to partially update resources, and DELETE is used to remove resources. It's important to use the appropriate HTTP method based on the intended action to ensure proper and consistent behavior in client-server interactions.
+
+
+
+======================================================
+14- what are the different types of authorization and their differences in API testing
+======================================================
+
+In API testing, there are several types of authorization methods used to authenticate and authorize access to protected resources. Here are some commonly used types of authorization and their differences:
+
+API Key: API key authorization involves generating a unique key for each client application or user. The API key is typically sent as a header or a query parameter in API requests. It serves as a form of identification and is used to authenticate and authorize access to the API. API keys are usually long-lived and are commonly used for third-party integrations.
+
+Basic Authentication: Basic authentication is a simple method where the client includes a username and password in the request headers. The credentials are encoded in Base64 and sent in the "Authorization" header using the "Basic" scheme. This method is relatively easy to implement but is considered less secure since the credentials are sent in each request in Base64 encoding.
+
+OAuth: OAuth (Open Authorization) is an industry-standard protocol for authorization. It allows users to grant access to their protected resources to third-party applications without sharing their credentials. OAuth involves multiple parties: the resource owner (user), the client application (third-party), and the authorization server. It uses access tokens for authorization and supports various flows such as authorization code flow, implicit flow, and client credentials flow.
+
+Bearer Token: Bearer token authorization involves using a token-based approach to authorize API requests. The client typically obtains an access token from an authorization server (such as OAuth) and includes it in the "Authorization" header using the "Bearer" scheme. The server validates the token and grants access if it is valid. Bearer tokens can have an expiration time and need to be refreshed periodically.
+
+JWT (JSON Web Tokens): JWT is a popular format for representing and transmitting claims securely between two parties. It is often used for authorization in API scenarios. A JWT consists of three parts: a header, a payload (claims), and a signature. The payload contains information about the user or client and can include roles, permissions, and other relevant data. The server validates the JWT signature and the claims to authorize access to protected resources.
+
+Each type of authorization method has its own advantages, security considerations, and use cases. The choice of authorization method depends on factors such as the sensitivity of the data, the level of trust between the client and the server, and the requirements of the API being tested. It is essential to understand the specific authorization mechanism being used by the API and ensure appropriate authorization is applied during testing.
+
+
+
+===================================================
+15- candidate must know to automate http method using any tools/technology
+===================================================
+
+Postman: Postman is a widely used API development and testing tool. It provides a user-friendly interface to construct and send HTTP requests, including various methods (GET, POST, PUT, PATCH, DELETE). It also allows you to define test scripts, manage environments, and generate test reports.
+
+cURL: cURL is a command-line tool that allows making HTTP requests from the command line. It supports various HTTP methods and provides options to set headers, pass parameters, and handle responses. It is available for multiple operating systems and widely used for manual testing and automation scripts.
+
+RestAssured: RestAssured is a popular Java library for testing RESTful APIs. It provides a fluent and easy-to-use interface for constructing and validating HTTP requests and responses. RestAssured supports all HTTP methods and offers features for handling authentication, headers, request parameters, and response validation.
+
+Apache JMeter: JMeter is a powerful open-source tool primarily used for load testing. However, it can also be used for API testing and automating HTTP methods. JMeter supports various protocols, including HTTP, and provides a visual interface for creating test plans, defining requests, and analyzing results.
+
+Selenium WebDriver: Selenium WebDriver is commonly used for automating browser-based testing, but it can also be used to automate HTTP methods indirectly. By interacting with web elements and executing JavaScript, Selenium can simulate HTTP requests and validate responses. This approach is useful when API functionality is embedded within a web application.
+
+Karate: Karate is a popular open-source testing framework for API testing. It is built on top of Cucumber and offers a simple and expressive syntax for writing API test scenarios. Karate supports all HTTP methods and provides features for request/response validation, data-driven testing, and generating reports.
+
+These are just a few examples of the tools and technologies available for automating HTTP methods and API testing. The choice of tool depends on factors such as programming language preference, project requirements, and specific testing needs.
+
+
+
+============================================
+16- Different tools used in API testing manual and automation testing
+============================================
+
+API testing, both manual and automated, can be performed using various tools. Here are some commonly used tools for API testing:
+Postman: Postman is a widely used tool for API development, testing, and documentation. It provides a user-friendly interface to construct and send HTTP requests, view responses, and create test scripts. Postman supports manual testing as well as automation using its built-in testing capabilities.
+
+SoapUI: SoapUI is an open-source tool specifically designed for testing SOAP and RESTful APIs. It offers features like creating and executing test cases, mocking services, data-driven testing, and generating reports. SoapUI allows both manual and automated testing of APIs.
+
+REST-assured: REST-assured is a popular Java library for testing RESTful APIs. It provides a fluent and intuitive API for writing test cases and performing assertions on API responses. REST-assured integrates well with Java-based test frameworks like JUnit and TestNG, making it suitable for automated API testing.
+
+JMeter: Apache JMeter is a powerful open-source tool primarily used for load testing, but it can also be used for API testing. JMeter supports various protocols, including HTTP, and provides the ability to create and execute API test plans, perform load testing, and generate performance reports.
+
+Karate: Karate is an open-source testing framework for API testing. It is built on top of Cucumber and offers a simple and expressive syntax for writing API test scenarios. Karate supports both manual and automated API testing, with features for request/response validation, data-driven testing, and generating reports.
+
+Newman: Newman is a command-line tool that allows running Postman collections from the command line. It is useful for executing Postman test scripts in a CI/CD environment or integrating with other testing frameworks and tools.
+
+Cypress: Although primarily a front-end testing tool, Cypress can also be used for API testing. It provides an easy-to-use API for making HTTP requests and validating responses. Cypress offers features like assertions, mocking, and network stubbing, making it suitable for API testing in conjunction with UI testing.
+
+These are just a few examples of the tools available for API testing, both manual and automated. The choice of tool depends on factors such as the type of API (RESTful, SOAP), programming language preference, required features, and the specific needs of your testing project.
+
+
+=====================================
+17- what are the differences between SOAP and REST API
+=====================================
+
+SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two different architectural styles used for building web services. Here are the key differences between SOAP and REST APIs:
+Communication Protocol:
+
+SOAP: SOAP APIs rely on XML (eXtensible Markup Language) for data exchange and typically use the HTTP or HTTPS protocol. SOAP APIs can also use other protocols such as SMTP, TCP, or JMS.
+REST: REST APIs use a variety of data formats, including XML and JSON (JavaScript Object Notation). REST APIs primarily use the HTTP or HTTPS protocol and adhere to the principles of the HTTP protocol, such as utilizing HTTP verbs (GET, POST, PUT, DELETE) for different operations.
+Message Format:
+
+SOAP: SOAP messages are XML-based and structured with a predefined schema. The payload of a SOAP message is enclosed within the body element, and the header element can contain additional information.
+REST: REST APIs can use different message formats, but JSON is commonly used due to its simplicity and compatibility with JavaScript. REST APIs do not enforce a specific message structure and are more flexible in terms of data format.
+Service Definition and Discovery:
+
+SOAP: SOAP APIs typically rely on the Web Services Description Language (WSDL) for defining the service interface and its operations. WSDL provides a standardized way to describe the structure and functionality of the SOAP web service. SOAP APIs often require a pre-defined contract between the client and server.
+REST: REST APIs do not have a formalized standard for service definition. The documentation typically describes the available endpoints, request/response formats, and supported operations. REST APIs are more flexible and do not require a strict contract between the client and server.
+Statefulness:
+
+SOAP: SOAP APIs can maintain statefulness, meaning that the server retains the state of the client throughout the interaction. The server keeps track of the client's session and context.
+REST: REST APIs are stateless by design. Each request from the client to the server is independent, and the server does not store any client-specific state. The client must include all necessary information in each request.
+Performance and Scalability:
+
+SOAP: SOAP APIs have additional overhead due to the XML-based message format and the use of SOAP envelopes and headers. SOAP APIs can be more complex and slower compared to REST APIs, especially for simpler use cases.
+REST: REST APIs are generally lightweight and have better performance due to the simpler message format (e.g., JSON) and the use of standard HTTP protocols. REST APIs are widely adopted and scalable.
+It's important to note that both SOAP and REST have their own strengths and are suitable for different scenarios. SOAP is often used in enterprise environments where formal contracts and standards are required, while REST is more prevalent in web and mobile applications due to its simplicity and scalability. The choice between SOAP and REST depends on factors such as project requirements, integration capabilities, and the specific use case at hand
+
+
+
+18- what is diference between put and patch
+What are all tyeps security testing can be done on a database.
+19- If API calls are costly then how you can manage that, what starteggy would be used
+20- REST -context
+21- Request specification in API testing
+22--> Difference between PUT and POST.
+23--> What is POJO.
+24--> How to set values in POJO class.
+25--> How to convert POJO class to JSON class.
+26--> What is JSON Path.
+27--> What is queryparam.
+28--> What is pathparam.
+29--> How to create JSON object body.
+30--> What are the major challenges faced in API testing?
+31--> How do you extract data from a response in Rest Assured?
+32--> What is the maximum size of a payload that can be sent via the POST method?
+33--> Can a GET query be made in place of a PUT to create a resource?
+34--> How many types of Authentication are there in POSTMAN/ Rest-Assured?
+35--> How is chaining carried out in REST Assured?
+36--> What are Serialization and Deserialization in Rest Assured?
+37--> What is the best way to keep sensitive data out of the log in rest assured?
+38--> How can we get size of JSON array in Rest assured?
+39--> What are Authorization or API keys
+40--> How do you test security testing using APIs

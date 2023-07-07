@@ -1,0 +1,3 @@
+1- SQL- types of Joins - also check few basic syntax
+2- what is the difference between out join and inner join
+3- What is SQL injection ?

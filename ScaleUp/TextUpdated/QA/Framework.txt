@@ -1,0 +1,702 @@
+=====================================================
+1- how do we run only failed test cases in BDD cucumber or any other framewrork.
+======================================================
+
+To run only the failed test cases in Java BDD Cucumber with TestNG, you can utilize TestNG's built-in features along with Cucumber's rerun functionality. Here's how you can do it:
+
+Create a TestNG configuration XML file:
+Start by creating a TestNG configuration XML file where you define the test suite and test classes. Here's an example:
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="FailedTestsSuite">
+  <test name="FailedTests">
+    <classes>
+      <class name="path.to.your.TestRunnerClass" />
+    </classes>
+  </test>
+</suite>
+
+Replace "path.to.your.TestRunnerClass" with the actual package and class name of your Cucumber Test Runner class.
+
+Use TestNG's rerun-failed-testng.xml listener:
+TestNG provides a built-in listener called rerun-failed-testng.xml that can be used to rerun only the failed test cases. Add the following line inside the <test> tag in the TestNG configuration XML file:
+
+<listeners>
+  <listener class-name="org.testng.reporters.FailedReporter" />
+</listeners>
+
+Configure Cucumber to generate rerun file:
+In your Cucumber Test Runner class, configure Cucumber to generate a rerun file containing the failed scenarios. You can use the rerun plugin and specify the output file path. Here's an example
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = "path/to/your/features",
+    glue = "path.to.your.step.definitions",
+    plugin = {"rerun:path/to/rerun.txt"}
+)
+public class TestRunner {
+    // ...
+}
+
+Make sure to replace "path/to/your/features" with the actual path to your feature files, "path.to.your.step.definitions" with the actual package for your step definitions, and "path/to/rerun.txt" with the desired output path for the rerun file.
+
+Execute the TestNG configuration:
+Finally, execute the TestNG configuration XML file using TestNG command-line or your preferred IDE. TestNG will pick up the failed scenarios from the rerun file and rerun only those scenarios.
+
+
+
+=======================
+2- What is strict in BDD cucumber
+=======================
+
+n BDD (Behavior-Driven Development) Cucumber, the strict option is a configuration parameter that can be used to enforce stricter behavior during test execution.
+
+When the strict mode is enabled, Cucumber treats any undefined or pending steps as failures. By default, Cucumber runs the scenarios with undefined or pending steps and marks them as skipped.
+
+Enabling strict mode is useful when you want to ensure that all steps in your feature files are implemented and executed correctly. It helps in identifying any missing or incomplete step definitions or scenarios during the test execution.
+
+To enable strict mode in Cucumber, you can specify it in the Cucumber Options or Cucumber Options plugin. Here's an example:
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    strict = true,
+    features = "path/to/your/features",
+    glue = "path.to.your.step.definitions"
+)
+public class TestRunner {
+    // ...
+}
+
+In the above example, the strict option is set to true in the @CucumberOptions annotation. This enables strict mode, ensuring that any undefined or pending steps will be treated as failures during test execution
+
+Enabling strict mode helps maintain the integrity and completeness of your BDD scenarios by ensuring that all steps are properly implemented and executed. It can be particularly useful in large projects with multiple contributors, as it enforces a disciplined approach to step definition implementation.
+
+==================================================================================
+3- what are the datatables in BDD cucumber, tell various methods by which datatables can be implemented in BDD cucumber.
+==================================================================================
+
+In BDD (Behavior-Driven Development) with Cucumber, DataTables are used to provide tabular test data in feature files. DataTables allow you to pass complex data structures, such as a table, as input to your step definitions. This makes it easier to represent and work with data-driven scenarios in a more readable format.
+
+To implement DataTables in BDD Cucumber with Java, you can use the following methods:
+
+Passing DataTable as an argument to a step definition method: You can define a step in your feature file with a DataTable parameter. Cucumber will automatically convert the DataTable in the feature file to a DataTable object in Java. You can then iterate over the rows and columns of the DataTable to access the data. Here's an example:
+Given the following users exist:
+  | Name    | Email                              |
+  | John      | john@example.com      |
+  | Alice      | alice@example.com      |
+  | Bob       | bob@example.com       |
+  
+@Given("the following users exist:")
+public void theFollowingUsersExist(DataTable dataTable) {
+    List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+    for (Map<String, String> row : data) {
+        String name = row.get("Name");
+        String email = row.get("Email");
+        // Perform necessary actions with the data
+    }
+}
+
+Converting DataTable to a List of custom objects: If you have a custom data structure or object that represents the table data, you can convert the DataTable to a list of objects using the asList() method. Each row in the DataTable corresponds to an instance of your custom object. Here's an example:
+Given the following products:
+  | Product Name | Price |
+  | Laptop       | 1000  |
+  | Smartphone   | 800   |
+  | Headphones   | 100   |
+  
+@Given("the following products:")
+public void theFollowingProducts(List<Product> products) {
+    for (Product product : products) {
+        String name = product.getName();
+        double price = product.getPrice();
+        // Perform necessary actions with the product data
+    }
+}
+
+Using DataTable with Examples in Scenario Outline: If you are using Scenario Outline with Examples in your feature file, you can include a DataTable in the Examples section. This allows you to provide different sets of data for each example iteration. Here's an example:
+Scenario Outline: Add numbers
+  Given I have the numbers:
+    | Number1 | Number2 |
+    | <num1>  | <num2>  |
+  When I add the numbers
+  Then the result should be <sum>
+  
+  Examples:
+    | num1 | num2 | sum |
+    | 2    | 3    | 5   |
+    | 5    | 7    | 12  |
+
+In this case, Cucumber will substitute the values from the Examples table into the DataTable for each iteration of the scenario.
+
+These are some of the methods by which DataTables can be implemented in BDD Cucumber with Java. The appropriate method to use depends on the structure and complexity of your data.
+
+
+
+===================================================================
+4- how to achieve the parellel run in selenium using BDD cucumber (if not only parellel run in selenium)
+===================================================================
+
+To achieve parallel execution of Selenium tests using BDD Cucumber, you can utilize TestNG along with Cucumber. TestNG provides built-in support for parallel execution of tests, and you can configure it to run your Cucumber scenarios in parallel.
+
+Here are the steps to achieve parallel run in Selenium using BDD Cucumber with TestNG:
+
+Step 1: Add TestNG dependency
+Include the TestNG dependency in your project's build configuration file (e.g., pom.xml for Maven).
+
+Step 2: Configure TestNG XML file
+Create a TestNG XML file (e.g., testng.xml) where you can specify the parallel execution settings and include your Cucumber runner class.
+
+Example testng.xml file:
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Parallel Execution Suite" parallel="tests" thread-count="2">
+    <test name="Test 1">
+        <classes>
+            <class name="com.yourpackage.RunCucumberTest1"/>
+        </classes>
+    </test>
+    <test name="Test 2">
+        <classes>
+            <class name="com.yourpackage.RunCucumberTest2"/>
+        </classes>
+    </test>
+</suite>
+
+In this example, we have specified two tests (Test 1 and Test 2) that will run in parallel using two threads.
+
+Step 3: Create separate Cucumber runner classes
+Create separate Cucumber runner classes for each test that you want to run in parallel. Each runner class should have its own unique glue path to specify the location of your step definitions.
+
+Example Cucumber runner class (RunCucumberTest1.java):
+import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = "com.yourpackage.stepdefinitions"
+)
+public class RunCucumberTest1 extends AbstractTestNGCucumberTests {
+}
+
+Step 4: Run the tests
+Execute the testng.xml file using TestNG. You can run the tests from your IDE or use command-line tools like Maven or Gradle.
+
+Upon execution, TestNG will run your Cucumber scenarios in parallel based on the configuration specified in the testng.xml file.
+
+Note: Make sure your test environment is capable of handling parallel execution. Ensure that your tests are designed to be thread-safe and do not have dependencies that may cause conflicts when running in parallel.
+
+If you don't want to use parallel execution, you can simply run your Cucumber tests using the Cucumber runner class without involving TestNG. In this case, the tests will be executed sequentially by default.
+
+Remember to adapt the package and class names according to your project's structure.
+
+==========================
+5- How to resolve the conflict in GIT
+==========================
+
+Identify the conflict: When you encounter a conflict, Git will notify you about the conflicting files during operations like merging branches or pulling changes. You can use commands like git status or git diff to identify the files with conflicts. Git will mark the conflicted sections within the files with special markers like <<<<<<<, =======, and >>>>>>>.
+
+Open the conflicted file: Open the conflicted file(s) in a text editor or an integrated development environment (IDE) that supports Git conflict resolution.
+
+Understand the conflict: Within the conflicted file, you'll see the conflicting sections marked by the Git conflict markers. The sections between <<<<<<< HEAD and ======= represent the changes from the current branch (HEAD), while the sections between ======= and >>>>>>> represent the changes from the branch you're merging or pulling.
+
+Resolve the conflict: Manually edit the conflicted file to resolve the conflict. Decide which changes to keep, modify, or discard. Remove the conflict markers (<<<<<<<, =======, >>>>>>>) and make the necessary adjustments to achieve the desired final state of the file.
+
+For simple conflicts, you can directly edit the file to keep the changes you want and remove the unwanted changes.
+For more complex conflicts, you may need to carefully merge the conflicting changes, taking into account the context and logic of the code. Consider referring to the original intent of the changes and discussing with your team if needed.
+Save the resolved file: After resolving the conflict, save the modified file.
+
+Stage the changes: Use the git add command to stage the resolved file(s) once you are satisfied with the resolution. For example: git add filename.
+
+Commit the changes: Use the git commit command to commit the resolved changes. Provide a meaningful commit message to describe the resolution. For example: git commit -m "Resolve conflict in filename".
+
+Continue the merge or rebase process: If you were in the middle of a merge or rebase operation, after resolving and committing the changes, you can continue the process by running git merge --continue or git rebase --continue.
+
+It's important to carefully review and test the changes after resolving conflicts to ensure that the desired outcome is achieved and the code functions as expected. Regularly committing and pushing your changes to the remote repository helps in collaboration and avoiding conflicts in the future.
+
+
+==========================================================================
+6- Which reporting tool you have used in BDD cucmumber and how you have integrated this in your framewrork
+=========================================================================
+
+Extent Report is a widely used reporting library in Java for generating interactive and comprehensive reports in BDD Cucumber frameworks. It provides detailed reports with rich visualizations, including charts, graphs, and step-level details, making it easier to analyze test results.
+
+To integrate Extent Report into a BDD Cucumber framework with Java, you can follow these general steps:
+
+Add Extent Report dependency: Include the Extent Report dependency in your project's build configuration file (e.g., Maven's pom.xml or Gradle's build.gradle). You can find the latest version of the Extent Report library on its official website or Maven Central Repository.
+
+Create Extent Report instance: Create an instance of the ExtentReports class, which represents the main entry point for working with Extent Report. You can define the report file path and other configurations during this step.
+
+Initialize Extent Report in Before hook: In your BDD Cucumber framework, initialize the Extent Report instance in the Before hook. This ensures that a new report is created for each test execution or scenario.
+
+Generate report during or after test execution: Use the Extent Report API to generate and update the report as your BDD Cucumber tests execute. You can capture information about test cases, steps, status, screenshots, and any other relevant details. Extent Report provides various reporting methods and options to customize the report layout, styling, and content.
+
+Finalize and close the report: After all the test executions or scenarios are completed, finalize and close the Extent Report instance. This ensures that the report is saved and all resources are released properly.
+
+By integrating Extent Report into your BDD Cucumber framework, you can generate detailed and visually appealing reports that provide insights into your test results. These reports can be shared with stakeholders and help in identifying issues, tracking progress, and making informed decisions.
+
+Note that the specific implementation and integration details may vary depending on your project setup, build tool, and the version of Extent Report you are using. It's recommended to refer to the official Extent Report documentation and examples for more specific instructions and code snippets.
+
+
+
+======================================================
+7- What is the difference between datatables and scenario outline in BDD cucmber
+======================================================
+
+In BDD Cucumber, both DataTables and Scenario Outline are used for parameterization and data-driven testing, but they have different purposes and usage:
+
+DataTables: DataTables allow you to define tabular data in your feature files. They are used to provide input data or test data for a specific scenario. DataTables are typically defined using the Gherkin syntax using vertical bars (|) to separate columns and new lines to separate rows. Each row in the DataTable represents a set of input values.
+
+Example:
+Scenario: Add two numbers
+  Given I have the following numbers:
+    | Number1 | Number2 |
+    | 10      | 5       |
+  When I add the numbers
+  Then the result should be 15
+
+In this example, the DataTable is used to provide input values (Number1 and Number2) for the "Add two numbers" scenario.
+
+In the step definition, you can access the DataTable and retrieve the values using the provided APIs. For example, in Java, you can use the DataTable parameter in your step definition method to access the data.
+
+Scenario Outline: Scenario Outline is used when you want to run the same scenario with multiple sets of data. It allows you to define a template scenario and replace placeholders (known as "placeholders" or "example values") with specific values from an Examples table. Scenario Outline is useful for testing the same functionality with different inputs or for performing data-driven testing.
+
+Example:
+Scenario Outline: Add two numbers
+  Given I have <Number1> and <Number2>
+  When I add the numbers
+  Then the result should be <Result>
+
+  Examples:
+    | Number1 | Number2 | Result |
+    | 10      | 5       | 15     |
+    | 8       | 2       | 10     |
+
+In this example, the Scenario Outline is used to define a generic template for adding two numbers, and the Examples table provides specific values to replace the placeholders <Number1>, <Number2>, and <Result>.
+
+The Scenario Outline is expanded into multiple scenarios based on the number of rows in the Examples table, each with its specific set of values.
+
+In the step definition, you can access the placeholders as regular parameters in your step definition method.
+
+In summary, DataTables are used to provide input or test data for a specific scenario, while Scenario Outline is used for parameterization and running the same scenario with multiple sets of data. DataTables are primarily used within a single scenario, while Scenario Outline is used to define a template scenario with placeholders that are replaced with values from an Examples table.
+
+
+================================================================
+8- You have a scenario, a background and a hook, tell me the order in which it will execute in BDD
+================================================================
+
+In BDD (Behavior-Driven Development), the execution order of the scenario, background, and hooks follows a specific sequence. Here is the order in which they are executed:
+
+Background: The background section is executed before each scenario in the feature file. It provides a set of steps that are common to all scenarios in the feature file. The steps defined in the background are executed first, ensuring the preconditions or initial setup required for the scenarios.
+
+Hooks: Hooks are special blocks of code that run before or after specific events in the test execution lifecycle. They are typically used for setup or teardown operations. Hooks can be defined at different levels: global hooks (applied to all scenarios), feature-level hooks (applied to scenarios within a specific feature), or scenario-level hooks (applied to a particular scenario).
+
+Global Hooks: Global hooks are defined once and apply to all scenarios across all feature files. They are executed before and after the entire test execution. Global hooks can be used for setting up the test environment, starting a browser session, or performing other global setup or teardown tasks.
+
+Feature-Level Hooks: Feature-level hooks are defined within a specific feature file and apply to all scenarios within that feature. They are executed before and after the scenarios in that feature file. Feature-level hooks can be used for setting up feature-specific prerequisites or performing cleanup tasks.
+
+Scenario-Level Hooks: Scenario-level hooks are defined within a specific scenario and apply only to that scenario. They are executed before and after the execution of the scenario. Scenario-level hooks can be used for scenario-specific setup or teardown operations.
+
+The order of execution for hooks depends on their location and the event they are associated with. Typically, the "before" hooks are executed before the associated event, and the "after" hooks are executed after the associated event.
+
+Scenario: After the background and any applicable hooks, the scenarios in the feature file are executed. Each scenario is executed independently, following the defined steps in the scenario. The order of execution is sequential, and the steps are executed in the order they appear.
+
+In summary, the execution order in BDD is: Background (if present) -> Hooks (Global hooks, Feature-level hooks, Scenario-level hooks) -> Scenario.
+
+
+==================================================================
+9- How to run one step multiple times in cucumber and one test case multiple time in BDD cucumber
+==================================================================
+
+In Cucumber, you can run a step multiple times or execute a test case multiple times by using scenario outlines and scenario loops.
+
+Running a Step Multiple Times:
+To run a step multiple times within a scenario, you can use a scenario outline and provide multiple examples for that step. Each example will result in the step being executed with different values.
+
+Example:
+Scenario Outline: Login with different users
+  Given I am on the login page
+  When I enter "<username>" and "<password>"
+  Then I should be logged in successfully
+
+  Examples:
+    | username | password |
+    | user1    | pass1    |
+    | user2    | pass2    |
+    | user3    | pass3    |
+In this example, the step "When I enter '<username>' and '<password>'" will be executed three times with different values for each example.
+
+Running a Test Case Multiple Times:
+To run a test case multiple times, you can use a scenario loop by specifying the number of iterations you want to run the scenario.
+
+Example:
+Scenario: Add items to cart
+  Given I am on the homepage
+  When I add an item to the cart
+  Then the item should be added successfully
+
+  @retry=3
+  Examples:
+    | Iteration |
+    | 1         |
+    | 2         |
+    | 3         |
+In this example, the scenario "Add items to cart" will be executed three times based on the number of iterations specified in the Examples table. The @retry=3 tag is used to indicate the number of iterations.
+
+In your test automation framework, you can implement the logic to handle the scenario loop based on the provided iteration count.
+
+By using scenario outlines and scenario loops, you can run a step multiple times within a scenario or execute a test case multiple times with different data or iterations in BDD Cucumber.
+
+
+==========================================================
+10- Tell me what is CICD and how you achieved using jenkins, git actions or azure pipeline
+===========================================================
+
+CICD stands for Continuous Integration and Continuous Deployment (or Continuous Delivery). It is a software development practice that involves automatically building, testing, and deploying applications to ensure a smooth and efficient software development and release process.
+
+Here's a brief overview of how CICD can be achieved using different tools:
+
+Jenkins: Jenkins is a popular open-source automation server that provides a wide range of plugins and integrations to support CICD workflows. With Jenkins, you can set up pipelines to automate the build, test, and deployment processes. You can configure Jenkins to monitor your version control system (e.g., Git) for changes, trigger builds, run tests, and deploy the application to various environments. Jenkins offers flexibility and customization options to suit different project requirements.
+
+GitHub Actions: GitHub Actions is a CICD platform provided by GitHub. It allows you to define workflows using YAML files directly within your Git repository. With GitHub Actions, you can set up automated workflows to build, test, and deploy your applications. It integrates seamlessly with your GitHub repositories and provides a wide range of pre-built actions and community-contributed workflows. You can trigger workflows based on events such as pushes, pull requests, or cron schedules.
+
+Azure Pipelines: Azure Pipelines is a cloud-based CICD service provided by Microsoft Azure. It enables you to build, test, and deploy applications across various platforms and environments. Azure Pipelines supports integration with multiple version control systems, including Git, and provides a visual editor for defining build and release pipelines. It offers robust capabilities for building, testing, and deploying applications, along with features like artifact management, approval workflows, and deployment gates.
+
+In all these tools, you typically define a series of steps or stages to automate the software development lifecycle. These steps may include actions like code compilation, running tests, static code analysis, packaging, and deploying the application to different environments. The tools provide various configuration options, environment variables, and integrations with other tools and services to support custom workflows and meet specific project requirements.
+
+Overall, CICD tools like Jenkins, GitHub Actions, and Azure Pipelines help streamline the development process, ensure code quality, and enable faster and more frequent software releases by automating the build, test, and deployment steps.
+
+
+==========================================================
+11- how do you implement CI tools to integrate the API testing ( CI tools such as Jenkins)
+==========================================================
+
+To integrate API testing with CI tools like Jenkins, you can follow these general steps:
+
+Set up your CI environment: Install and configure Jenkins on a server or your local machine. Ensure that Jenkins is up and running.
+
+Create a Jenkins job: In Jenkins, create a new job or configure an existing job to include API testing as part of the build process.
+
+Install necessary plugins: Install any plugins required for API testing. For example, you may need plugins for running API tests, generating reports, or managing dependencies.
+
+Configure source code repository: Connect Jenkins to your source code repository (e.g., Git, SVN) where your API tests are stored. Set up the appropriate repository URL, authentication, and branch selection.
+
+Define build steps: Specify the necessary build steps in your Jenkins job configuration. These steps will vary depending on your specific API testing framework and tools. Common steps include installing dependencies, compiling code, running tests, and generating test reports.
+
+Integrate API testing scripts: Add the necessary commands or scripts to execute your API tests within the build steps. This may involve running test scripts using specific testing frameworks (e.g., JUnit, TestNG) or executing API testing tools (e.g., Postman, RestAssured).
+
+Set up test environment: Ensure that the required test environment (e.g., test databases, test APIs, test servers) is properly configured and accessible during the build process. You may need to configure environment variables or provide connection details as part of your Jenkins job configuration.
+
+Define test execution triggers: Specify when the API tests should be executed. This can be triggered by changes in the source code repository (e.g., on each commit, on a specific branch), on a schedule, or manually.
+
+Configure notifications and reports: Set up notifications to receive build status updates or test failure alerts via email, Slack, or other communication channels. Configure report generation to capture and display test results in Jenkins.
+
+Save and trigger the job: Save your Jenkins job configuration, and you can manually trigger the job or wait for it to be triggered automatically based on your defined triggers.
+
+By following these steps, you can integrate API testing into your CI pipeline using Jenkins or other CI tools. This enables automated and continuous execution of your API tests as part of the software development and delivery process, helping you catch issues early and ensure the quality of your APIs.
+
+
+
+======================================================================
+12- what is sonarqube and sonarlint. give one example of an issue which we can get while scanning the code
+======================================================================
+
+SonarQube and SonarLint are tools used for code quality analysis and static code analysis.
+
+SonarQube:
+SonarQube is an open-source platform that performs continuous code inspection to ensure code quality, identify bugs, security vulnerabilities, and code smells. It provides detailed reports and metrics to track code quality over time. SonarQube can be integrated into the CI/CD pipeline to automatically analyze code and provide feedback on the quality of the codebase.
+
+SonarLint:
+SonarLint is a lightweight code analyzer that can be integrated into IDEs (Integrated Development Environments) such as IntelliJ, Eclipse, and Visual Studio. It helps developers identify and fix code issues while coding, providing real-time feedback. SonarLint performs static code analysis and provides suggestions to improve code quality, maintainability, and reliability.
+
+Example issue detected by SonarQube/SonarLint:
+
+One example of an issue that SonarQube/SonarLint can detect is the use of hardcoded sensitive information, such as passwords or API keys, directly in the code. This is considered a security vulnerability as it exposes sensitive data and increases the risk of unauthorized access.
+
+SonarQube/SonarLint can flag this issue and suggest remediation by recommending best practices such as storing sensitive information in secure configuration files or using environment variables. By detecting such issues early in the development process, SonarQube/SonarLint helps in improving the security of the codebase and reducing potential vulnerabilities.
+
+
+====================================================
+13- what is Build tool and which all tools you have used in your automation code
+=====================================================
+
+A build tool is a software tool that automates the process of compiling source code, running tests, and packaging the software into deployable artifacts. It helps streamline the software development process by automating repetitive tasks and managing dependencies.
+
+Some commonly used build tools in the Java ecosystem are:
+
+Apache Maven: Maven is a popular build automation tool that uses XML-based project configuration files (pom.xml) to define the project structure, dependencies, and build process. It provides a standard way to manage dependencies, compile source code, run tests, and package the application.
+
+Gradle: Gradle is a flexible build automation tool that uses Groovy or Kotlin DSL (Domain-Specific Language) for defining build scripts. It offers a powerful and concise syntax, supports incremental builds, and provides excellent integration with popular development frameworks and tools.
+
+Ant: Ant is an older build tool that uses XML-based build scripts (build.xml). It provides a wide range of built-in tasks and can be customized to suit specific project requirements. Ant is widely used for legacy projects or when a simpler build tool is preferred.
+
+Apache Buildr: Buildr is a Ruby-based build tool that provides a higher-level abstraction for defining build scripts. It offers a concise syntax, supports dependency management, and integrates well with popular testing frameworks.
+
+In terms of the tools I have used in my automation code, I have primarily worked with Maven and Gradle. These build tools have extensive community support, are widely adopted, and provide robust capabilities for managing dependencies, building projects, and running tests.
+
+
+=========================
+14- Explain your frameword and code
+=========================
+
+Certainly! Here's an overview of a BDD (Behavior-Driven Development) framework using Cucumber with Java, TestNG, and Extent Report for reporting:
+
+Project Structure:
+
+Create a Maven or Gradle project with the required dependencies for Cucumber, TestNG, and Extent Report.
+Organize your project into separate packages for features, step definitions, utility classes, and test runners.
+Feature Files:
+
+Write feature files in Gherkin syntax that describe the behavior of the application in a human-readable format.
+Define scenarios with Given, When, and Then steps to outline the desired behavior.
+Step Definitions:
+
+Create step definition classes that map the steps from the feature files to Java code.
+Implement the step definition methods using regular expressions or annotations.
+Use TestNG assertions to validate the expected behavior.
+Test Runners:
+
+Create a TestNG test runner class that configures the Cucumber options and specifies the features and step definition package.
+Use the CucumberOptions annotation to define the location of feature files, step definitions, and desired output formats.
+Execute the test runner class to run the Cucumber scenarios.
+Reporting with Extent Report:
+
+Add the Extent Report dependency to your project.
+Create an Extent Report object and configure the report settings.
+Generate and customize test case reports within the step definition methods.
+Include relevant information like test status, screenshots, logs, and other details in the report.
+Running the Tests:
+
+Use your preferred IDE or build tool to run the tests.
+The tests will execute the scenarios defined in the feature files, and the Extent Report will generate the test report.
+Note: This is a high-level overview of a BDD framework using Cucumber with Java, TestNG, and Extent Report. The actual implementation may vary based on project requirements and preferences.
+
+======================
+pom.xml (Maven configuration):
+
+
+<!-- Add dependencies for Cucumber, TestNG, and Extent Report -->
+Feature File (example.feature):
+
+
+Feature: Login Feature
+
+Scenario: Successful Login
+  Given I am on the login page
+  When I enter valid credentials
+  Then I should be logged in successfully
+Step Definition Class (StepDefinitions.java):
+
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+import org.testng.Assert;
+
+public class StepDefinitions {
+
+    @Given("^I am on the login page$")
+    public void navigateToLoginPage() {
+        // Code to navigate to the login page
+    }
+
+    @When("^I enter valid credentials$")
+    public void enterValidCredentials() {
+        // Code to enter valid credentials
+    }
+
+    @Then("^I should be logged in successfully$")
+    public void verifySuccessfulLogin() {
+        // Code to verify successful login
+        Assert.assertTrue(true); // TestNG assertion
+    }
+}
+Test Runner Class (TestRunner.java):
+
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+    features = "src/test/resources/features",
+    glue = "com.example.stepdefinitions",
+    plugin = {"pretty", "html:target/cucumber-report"}
+)
+public class TestRunner extends AbstractTestNGCucumberTests {
+}
+Extent Report Configuration:
+
+
+// Code to configure Extent Report
+Running the Tests:
+
+Execute the TestRunner class as a TestNG test.
+The Cucumber scenarios in the feature file will be executed, and the Extent Report will generate the test report in the specified format (e.g., HTML).
+This is a basic example to get started with a BDD framework using Cucumber with Java, TestNG, and Extent Report. You can further customize and enhance the framework based on your project requirements.
+
+Please note that you'll need to add the required dependencies, set up the project structure, and configure the Extent Report according to your specific setup.
+
+
+
+===============
+15- Map Interface
+===============
+
+In Java, the Map collection is used to store key-value pairs, where each key is unique. It provides an efficient way to retrieve and manipulate data based on the key. The Map interface is implemented by several classes in Java, including HashMap, TreeMap, LinkedHashMap, and ConcurrentHashMap. Here's a brief explanation of each:
+
+HashMap: It stores key-value pairs in a hash table. It provides constant-time performance for basic operations like get and put. However, it does not maintain any specific order of elements.
+
+TreeMap: It is implemented as a red-black tree, which provides a sorted order based on the keys. It is slower than HashMap but maintains the elements in a sorted manner.
+
+LinkedHashMap: It is similar to HashMap but maintains the insertion order of the elements. It uses a doubly-linked list to keep track of the insertion order.
+
+ConcurrentHashMap: It is a thread-safe version of HashMap and provides concurrent access to the map. It allows multiple threads to read and write concurrently without explicit synchronization.
+
+Here's an example of how to use the HashMap class:
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapExample {
+    public static void main(String[] args) {
+        // Create a HashMap
+        Map<String, Integer> map = new HashMap<>();
+
+        // Add key-value pairs to the map
+        map.put("Apple", 10);
+        map.put("Banana", 5);
+        map.put("Orange", 8);
+
+        // Access values by key
+        int appleQuantity = map.get("Apple");
+        System.out.println("Quantity of Apple: " + appleQuantity);
+
+        // Check if a key exists in the map
+        boolean containsKey = map.containsKey("Banana");
+        System.out.println("Contains Banana? " + containsKey);
+
+        // Iterate over the key-value pairs
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            String fruit = entry.getKey();
+            int quantity = entry.getValue();
+            System.out.println(fruit + ": " + quantity);
+        }
+
+        // Remove a key-value pair
+        map.remove("Orange");
+
+        // Check the size of the map
+        int size = map.size();
+        System.out.println("Size of the map: " + size);
+    }
+}
+This example demonstrates basic operations such as adding key-value pairs, accessing values by key, checking for key existence, iterating over the map, removing a key-value pair, and getting the size of the map.
+
+
+16- poll scm in jenkins
+17- Testing Strategy
+18- What all paramters are there which indicate about the performance of any API or web application.
+19- different phases of srum in agile
+20- what is agile methadology
+21- CICD tools used, such as jenkins, git actions and azure pipeline
+22- what is STLC with full explainnation
+23- what defect life cycle also explain in JIRA
+24- Your approach to start the testing
+
+
+
+25- Microservice arhitechtecture
+In a typical microservice architecture, the different layers of a microservice can include:
+
+1. Presentation Layer: Responsible for handling user interactions, including handling HTTP requests, input validation, and user interface components.
+
+2. API Layer: Exposes APIs or endpoints that allow external services or clients to interact with the microservice. This layer handles the translation of requests and responses between the external world and the microservice.
+
+3. Service Layer: Implements the business logic of the microservice. It handles the processing of requests, performs necessary computations or operations, and orchestrates interactions with other services or data sources.
+
+4. Data Access Layer: Handles the interaction with data sources, such as databases or external APIs. It is responsible for retrieving and persisting data required by the microservice.
+
+5. Infrastructure Layer: Provides infrastructure-related components and services, such as logging, monitoring, caching, security, and configuration management. This layer supports the functionality and operational aspects of the microservice.
+
+6. External Service Integrations: Microservices often need to interact with other services or systems. This layer handles the integration with external services, such as payment gateways, email services, or third-party APIs.
+
+It's important to note that the exact layers and their names may vary depending on the specific implementation and architectural choices. The layers mentioned above provide a general overview of the common components and responsibilities found in a microservice architecture.
+
+26- 3 tier architecture
+
+Three-tier architecture, also known as multi-tier architecture, is a software architecture pattern that divides an application into three logical and separate layers: presentation layer, application or business logic layer, and data storage layer. Each layer has specific responsibilities and interacts with the other layers through well-defined interfaces. The three tiers are as follows:
+
+1. Presentation Layer (User Interface Layer):
+   - Responsible for the user interface and user interactions.
+   - Presents information to the users and collects user inputs.
+   - Handles user input validation and rendering of the user interface.
+   - May include components like web browsers, mobile apps, or desktop applications.
+
+2. Application or Business Logic Layer:
+   - Contains the application logic and processes the user requests.
+   - Implements the business rules and workflows of the application.
+   - Performs data validation, transformation, and calculations.
+   - Handles user authentication, authorization, and session management.
+   - Communicates with the data storage layer and external services.
+   - Often implemented as a set of APIs or services.
+
+3. Data Storage Layer:
+   - Stores and manages the application data.
+   - Includes databases, file systems, or other data storage mechanisms.
+   - Handles data retrieval, storage, modification, and deletion.
+   - May involve data caching and transaction management.
+   - Provides an interface for the application layer to interact with the data.
+
+The three-tier architecture provides separation of concerns, modularity, and scalability. It allows for easier maintenance and development as each layer can be updated or modified independently without affecting the other layers. It also enables better resource utilization, as different layers can be scaled independently based on demand.
+
+In practice, the three-tier architecture can be implemented using various technologies and frameworks, such as web servers, application servers, APIs, databases, and client-side technologies. The specific design and components within each layer may vary based on the requirements and technologies chosen for the application.
+
+27- what is clinet server architecture
+Client-server architecture is a network architecture model where computing tasks or services are divided between client devices and server systems. In this model, the client (also referred to as the front-end or requester) is a device or software application that requests services or resources from the server (also known as the back-end or provider) over a network.
+
+Here are the key components and characteristics of client-server architecture:
+
+1. Client: The client is the end-user device or software application that initiates requests for services or resources. It can be a computer, mobile device, web browser, or any other device that interacts with the user.
+
+2. Server: The server is a powerful computer or system that provides services or resources to clients. It responds to client requests, processes data, and performs tasks on behalf of clients.
+
+3. Communication: The client and server communicate with each other over a network using protocols such as HTTP, TCP/IP, or other network protocols. The client sends requests to the server, and the server sends back responses containing the requested data or resources.
+
+4. Request-Response Model: The client sends a request to the server, specifying the desired service or resource. The server processes the request, performs necessary operations, and sends back a response containing the requested data or an acknowledgment of the action performed.
+
+5. Scalability: The client-server architecture allows for scalability by enabling multiple clients to connect to a single server or distribute the workload across multiple servers. This allows for efficient resource utilization and handling of increasing client demands.
+
+6. Centralized Resources: The server typically hosts and manages centralized resources such as databases, files, or application logic. Clients can access and utilize these shared resources as needed.
+
+7. Security: Client-server architecture allows for implementing security measures at the server level, protecting the shared resources and controlling access to sensitive data.
+
+8. Independence: Clients and servers can be developed independently, using different technologies and platforms. This allows for flexibility and specialization in the design and implementation of client and server components.
+
+Client-server architecture is widely used in various applications, including web applications, database management systems, email servers, and file-sharing systems. It provides a scalable and efficient approach to distribute computing tasks, manage resources, and enable communication between clients and servers over a network.
+
+
+
+28- What is dependency injection?
+29- Advantages and disadvantages of the agile
+30- What is the TDD approach and how it is different from the BDD approach.
+31- scrum story estimation questions
+32- paratmeteriztion in jenkins 
+33- what is pattern used in current framework 
+34- what is POM and page factory
+35- what is patterns
+36- Different reporting tools which is used
+37- GIT branching startegy used - release - feature - task
+38- how you edit the lastet commit in GIT - git commit --amend -m "New message" git push --force repository-name branch-name.
+39- git merge 
+40- git rebase
+41- Do you know OOPs concepts and in a framework where and how you have implemented it?
+42- In cucumber, in which class you have glue, how many classes for glue, and what was the program line limit for the class?
+43- How to find a missing implementation in Cucumber?, Used static data or dynamic data, what was the approach?
+
+

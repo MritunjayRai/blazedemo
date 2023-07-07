@@ -1,0 +1,281 @@
+JavaOops-
+=======
+1- What is out of memory error in java
+2- What will happen if we make constructor as final
+3- what are the different mvn command and gradle command which you have worked
+4- difference between thread.start() and thread.run()
+5- how to call both the constructor(parameterized and no-arg constructor) using single instance of the class
+6- Difference between List and Set interface
+7- Difference between all the classes which implements List interface
+8- Difference between all the classes which implements Set interface
+9- Few scenarios based question from collection Framework
+10- Difference between all the classes which implement map interface
+11- Few scenarios based question from Maps
+12- OOPS concept in Java and ther usage
+13- What is difference between Error and Exception in java and how to handle them
+14- Super vs this
+15- Examples of polymorphism
+16- Difference between abstract and interfaces
+17- Types of access modfiers - examples
+18- Types of variables in java
+19- Static vs non static
+20- Why main is static in java
+21- why overriding is not possible with static
+22- Can static method be overloaded
+23- Can abstract class be final
+24- what are methods there to iterate over SET and MAP
+25- types of construtors in java
+ 26- java collection- difference between LIST and SET
+ 27- Difference between StringBuilder and StringBuffer - synchonization and thread safety
+ 28- how many objectes will get created for local, instance and static variables
+ 29- maven profiles
+ 30- throwable  
+ 31- try with resoures in exception
+ 32- what is scope in pom.xml - used to define the visibility and availability of dependencies
+ 
+==============
+Java program
+==============
+Program to check palindrome numbers.
+Program to reverse integer in JAVA.
+Program to finding missing numbers in array.
+Program to find duplicate numbers in JAVA array.
+Program to find the largest & smallest numbers in an array.
+Program to swap two two integers without using third variable and two swap strings without using third variable.
+Program to find prime numbers.
+Program to find Armstrong number.
+Program to find factorial of a number.
+Program to find duplicate words in a given strings.
+Program to print count of vowels in string in java.
+Program sorting an array in ascending order by removing duplicates.
+Program to check palindrome string.
+Program to count digits in a number.
+Program to count even odd digit in a number.
+Program to count sum of digits in a number.
+Program to find largest of 3 numbers.
+Program to generate random numbers & strings in java.
+Program to find sum of elements in array.
+Program to print number of words, character frequency in string.
+Program to print characters in descending order of frequency.
+Program to find majority elements in an array.
+Program to sort names in an array.
+Program to find intersection of elements into arrays in java.
+Program to check panagram.
+Program to find longest substring without repetition.
+Program for string compression.
+Program to get the first letter of each word string.
+Program to print all sub strings for a given strings.
+Program for Stack implementation using two array in java.
+Program for Stack implementation using array in java.
+Program for Binary search in java.
+Program to move all zero to end of array.
+Program to move all negative number in start of array & +ve number in end of an array.
+Program to count number of vowels in a given string.
+Program to count the number of words in a given string.
+Program to reverse each word in a given string.
+Program to find numbers of words characters and number in a given text file.
+Program to print pyramid pattern of numbers?
+Program to reverse a string without using loops and build-in functions.
+Program to generate Fibonacci series.
+Program to Print even and odd number in an array.
+Program to check the quality of two arrays.
+Program for how to reverse the order of elements in arraylist in java?
+Program for searching an element in array using a linear search.
+Program for searching an element in array using a Binary search.
+Program for Sorting an array using bubble sort.
+Program to sort elements in an array using build-in methods.
+Program to remove junk or special characters in string.
+Program to remove white spaces in string.
+Program to read data from text file.
+Program to write data in text file.
+Program to perform calculator operation.
+Program to find the second minimum and maximum number in an array.
+remove the duplicates in the string without using any inbuilt API (basically without using list or any other collection)
+password validation (for eg a string contains a special char, 2 alphabets, 2 numeric digit and lenght should be of 10 characters)
+write the code to read the value from excel sheet
+write the code find the Longest palindrome in given string
+To count the occurrences of each word in a given string
+To remove all occurrences of characters in a given string from another string
+To reverse the order of words in a string while keeping each word intact
+palindrome program if the number is palindrome or not.
+FibonacciSeries
+reverse the string on its own place
+reverse the string
+RemoveDuplicateChar  - from strings
+CountDuplicateWords - in a given sentence
+SplitStringAndReverse
+SecondHighestElement  - in an unsorted array
+ReturnIndexOfSubarrayEquallingTarget
+Print0To100WithoutLoop
+LongestPalindrome
+print the array in ascending order
+code to reverse the string and count the numbers in string
+Reverse the string preserving the space 
+Reverse the string without using any inbuilt method
+
+
+===========
+Selenium
+===========
+1- Can we use Robot keyword and run our test in selenium if yes can we do in jenkins(any CI tools)
+2- Consider a web table which is dynamic in nature, how we will locate the element which is in 4th column and 3rd row.
+3- How to handle the dynamic web elements in selenium-
+4- How we will handle cookies in selenium or how we will store the cookies in our next test case
+5- How do we handle authenticate pop up
+6- name few interface which you have used in selenium and there function
+7- name few abstract methods which you have used in selenium framewrork and their functionality
+8- name few implementation classes used in selenium and there functionality
+9- what are the annotations hairarchy in testNG
+10- when we will get stale element exception and how to avoid it
+11- what is the difference between webdriver and remote driver
+12- how to take screenshot in selenium and and how you are taking in BDD
+13- How you verify the colour of the text in selenium
+14- how to type in selenium without using sendkeys
+15- What are the soft asserts and hard asserts in selenium
+16- what is switch in selenium, whether its interface or class or methods
+17- How do we set the size of browser windows in selenium
+18- name a method where we are using method overloading and method overriding in selenium
+19- what is the difference between XSSF and HSSF or xls and xlsx, where do we use in selenium( performance wise which one will be faster
+20- How do you conducted cross browser testing in you project in selenium
+21- Explain few scenario which you cannot automate in your selenium project
+22- ChromeDriver driver = new ChromeDriver(); explain this
+23- how to run tests in incognito mode using selenium
+24- how driver.get() works internally
+25- How would you disable alerts in selenium
+26- how do you launch the browser in your selenium framework ( dont expect the answer to initialize the driver)
+27- how you have achieved data driven in your framework
+28- have you verified the email using the selenium if yes then how
+29- How to upload the textfile in selenium
+30- How to download the file using selenium
+31-To assert that "Kiwi" is present in a dropdown using Selenium
+32- Authentication pop up
+33- sendkeys is hidden
+34- what is stale element exception, when we will get it and how to avoid it
+35- Different interfaces used in Selenium and its usage
+36- Methods of SearchContext interface: 
+37- METHODS OF WebElement interface: 
+38- Different locators used in selenium and handsOn
+39- Different wait times in selenium and its usage
+40- few scenario based questions in selenium
+41- Assertions
+42- wait types in selenium
+43- what is difference between driver.navigateTo() and get() 
+44- different methods of navigateTo()
+45- different methods of switch
+46- How to scroll to the bottom of the page
+47- axes bases xpaths 
+48- svg elements xpaths
+49- How to capture the screenshot in seleniums
+50- what is listeners in TestNG
+51- how to run the failed test cases in Selenium
+52- Switch the window tabs and get to the second tab and get the title of it-
+
+
+===============
+API Testing
+===============
+1- what are the challenges you faced in api testing
+2- what is 429 error in api testing and when we will get it
+3- what are the different authorization in API
+4- Difference between authorization and authentication
+5- Give one API and ask the scenario (they should cover positive and focus in negative) (API -GET/{domainName}/employee?emplooyeeID=1234)
+6- Can we use POST instead of PUT if yes then what will happen
+7- what are the issues you have observed while doing the API testing
+8- what are the pojo and model classes in terms of api automation testing using rest assured
+9- different exceptions in POST api call
+10- can we use POST instead of PUT if yes then what will happen
+11- TPS is higher, how to deal it in API Testing
+12- List top 10 different API status codes and when does it occur
+13- difference between the different http methods (GET,POST,PUT,PATCH,DELETE)
+14- what are the different types of authorization and their differences in API testing
+15- candidate must know to automate http method using any tools/technology
+16- Different tools used in API testing manual and automation testing
+17- what are the differences between SOAP and REST API
+18- what is diference between put and patch
+19- If API calls are costly then how you can manage that, what starteggy would be used
+20- What is the REST -context in REST Assured
+21- Request specification in REST Assured
+22--> Difference between PUT and POST.
+23--> What is POJO.
+24--> How to set values in POJO class.
+25--> How to convert POJO class to JSON class.
+26--> What is JSON Path.
+27--> What is queryparam.
+28--> What is pathparam.
+29--> How to create JSON object body.
+30--> What are the major challenges faced in API testing?
+31--> How do you extract data from a response in Rest Assured?
+32--> What is the maximum size of a payload that can be sent via the POST method?
+33--> Can a GET query be made in place of a PUT to create a resource?
+34--> How many types of Authentication are there in POSTMAN/ Rest-Assured?
+35--> How is chaining carried out in REST Assured?
+36--> What are Serialization and Deserialization in Rest Assured?
+37--> What is the best way to keep sensitive data out of the log in rest assured?
+38--> How can we get size of JSON array in Rest assured?
+39--> What are Authorization or API keys
+40--> How do you test security testing using APIs
+
+
+=========
+SQL
+=========
+1- SQL- types of Joins - also check few basic syntax
+2- what is the difference between out join and inner join
+3- What is SQL injection ?
+
+
+=========
+Framework
+=========
+1- how do we run only failed test cases in BDD cucumber or any other framewrork.
+2- What is strict in BDD cucumber
+3- what are the datatables in BDD cucumber, tell various methods by which datatables can be implemented in BDD cucumber.
+4- how to achieve the parellel run in selenium using BDD cucumber (if not only parellel run in selenium)
+5- How to resolve the conflict in GIT
+6- Which reporting tool you have used in BDD cucmumber and how you have integrated this in your framewrork
+7- What is the difference between datatables and scenario outline in BDD cucmber
+8- You have a scenario, a background and a hook, tell me the order in which it will execute in BDD
+9- How to run one step multiple times in cucumber and one test case multiple time in BDD cucumber
+10- Tell me what is CICD and how you achieved using jenkins, git actions or azure pipeline
+11- how do you implement CI tools to integrate the API testing ( CI tools such as Jenkins)
+12- what is sonarqube and sonarlint. give one example of an issue which we can get while scanning the code
+13- what is Build tool and which all tools you have used in your automation code
+14- Explain your frameword and code
+15- Map Interface
+16- poll scm in jenkins
+17- Testing Strategy
+18- What all paramters are there which indicate about the performance of any API or web application.
+19- different phases of srum in agile
+20- what is agile methadology
+21- CICD tools used, such as jenkins, git actions and azure pipeline
+22- what is STLC with full explainnation
+23- what defect life cycle also explain in JIRA
+24- Your approach to start the testing
+25- Microservice arhitechtecture
+26- 3 tier architecture
+27- what is clinet server architecture
+28- What is dependency injection?
+29- Advantages and disadvantages of the agile
+30- What is the TDD approach and how it is different from the BDD approach.
+31- scrum story estimation questions
+32- paratmeteriztion in jenkins 
+33- what is pattern used in current framework 
+34- what is POM and page factory
+35- what is patterns
+36- Different reporting tools which is used
+37- GIT branching startegy used - release - feature - task
+38- how you edit the lastet commit in GIT - git commit --amend -m "New message" git push --force repository-name branch-name.
+39- git merge 
+40- git rebase
+
+String
+collections
+
+
+
+
+
+
+
+
+ 
