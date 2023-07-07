@@ -24,94 +24,94 @@ JavaOops-
 22- Can static method be overloaded
 23- Can abstract class be final
 24- what are methods there to iterate over SET and MAP
-25- types of construtors in java
- 26- java collection- difference between LIST and SET
- 27- Difference between StringBuilder and StringBuffer - synchonization and thread safety
- 28- how many objectes will get created for local, instance and static variables
- 29- maven profiles
- 30- throwable  
- 31- try with resoures in exception
- 32- what is scope in pom.xml - used to define the visibility and availability of dependencies
+25- types of constructors in java
+26- java collection- difference between LIST and SET
+27- Difference between StringBuilder and StringBuffer - synchonization and thread safety
+28- how many objects will get created for local, instance and static variables
+29- maven profiles
+30- throwable
+31- try with resources in exception
+32- what is scope in pom.xml - used to define the visibility and availability of dependencies
  
 ==============
 Java program
 ==============
-Program to check palindrome numbers.
-Program to reverse integer in JAVA.
-Program to finding missing numbers in array.
-Program to find duplicate numbers in JAVA array.
-Program to find the largest & smallest numbers in an array.
-Program to swap two two integers without using third variable and two swap strings without using third variable.
-Program to find prime numbers.
-Program to find Armstrong number.
-Program to find factorial of a number.
-Program to find duplicate words in a given strings.
-Program to print count of vowels in string in java.
-Program sorting an array in ascending order by removing duplicates.
-Program to check palindrome string.
-Program to count digits in a number.
-Program to count even odd digit in a number.
-Program to count sum of digits in a number.
-Program to find largest of 3 numbers.
-Program to generate random numbers & strings in java.
-Program to find sum of elements in array.
-Program to print number of words, character frequency in string.
-Program to print characters in descending order of frequency.
-Program to find majority elements in an array.
-Program to sort names in an array.
-Program to find intersection of elements into arrays in java.
-Program to check panagram.
-Program to find longest substring without repetition.
-Program for string compression.
-Program to get the first letter of each word string.
-Program to print all sub strings for a given strings.
-Program for Stack implementation using two array in java.
-Program for Stack implementation using array in java.
-Program for Binary search in java.
-Program to move all zero to end of array.
-Program to move all negative number in start of array & +ve number in end of an array.
-Program to count number of vowels in a given string.
-Program to count the number of words in a given string.
-Program to reverse each word in a given string.
-Program to find numbers of words characters and number in a given text file.
-Program to print pyramid pattern of numbers?
-Program to reverse a string without using loops and build-in functions.
-Program to generate Fibonacci series.
-Program to Print even and odd number in an array.
-Program to check the quality of two arrays.
-Program for how to reverse the order of elements in arraylist in java?
-Program for searching an element in array using a linear search.
-Program for searching an element in array using a Binary search.
-Program for Sorting an array using bubble sort.
-Program to sort elements in an array using build-in methods.
-Program to remove junk or special characters in string.
-Program to remove white spaces in string.
-Program to read data from text file.
-Program to write data in text file.
-Program to perform calculator operation.
-Program to find the second minimum and maximum number in an array.
-remove the duplicates in the string without using any inbuilt API (basically without using list or any other collection)
-password validation (for eg a string contains a special char, 2 alphabets, 2 numeric digit and lenght should be of 10 characters)
-write the code to read the value from excel sheet
-write the code find the Longest palindrome in given string
-To count the occurrences of each word in a given string
-To remove all occurrences of characters in a given string from another string
-To reverse the order of words in a string while keeping each word intact
-palindrome program if the number is palindrome or not.
-FibonacciSeries
-reverse the string on its own place
-reverse the string
-RemoveDuplicateChar  - from strings
-CountDuplicateWords - in a given sentence
-SplitStringAndReverse
-SecondHighestElement  - in an unsorted array
-ReturnIndexOfSubarrayEquallingTarget
-Print0To100WithoutLoop
-LongestPalindrome
-print the array in ascending order
-code to reverse the string and count the numbers in string
-Reverse the string preserving the space 
-Reverse the string without using any inbuilt method
+1-Program to check palindrome numbers.
+2-Program to reverse integer in JAVA.
+3-Program to finding missing numbers in array.
+4-Program to find duplicate numbers in JAVA array.
+5-Program to find the largest & smallest numbers in an array.
+6-Program to swap two integers without using third variable and two swap strings without using third variable.
+7-Program to find prime numbers.
+8-Program to find Armstrong number.
+9-Program to find factorial of a number.
+10-Program to find duplicate words in a given strings.
+11-Program to print count of vowels in string in java.
+12-Program sorting an array in ascending order by removing duplicates.
+13-Program to check palindrome string.
+14-Program to count digits in a number.
+15-Program to count even odd digit in a number.
+16-Program to count sum of digits in a number.
+17-Program to find largest of 3 numbers.
+18-Program to generate random numbers & strings in java.
+19-Program to find sum of elements in array.
+20-Program to print number of words, character frequency in string.
+21-Program to print characters in descending order of frequency.
+22-Program to find majority elements in an array.
+23-Program to sort names in an array.
+24-Program to find intersection of elements into arrays in java.
+25-Program to check anagram.
+26-Program to find the longest substring without repetition.
+27-Program for string compression.
+28-Program to get the first letter of each word string.
+29-Program to print all sub strings for a given strings.
+30-Program for Stack implementation using two array in java.
+31-Program for Stack implementation using array in java.
+32-Program for Binary search in java.
+33-Program to move all zero to end of array.
+34-Program to move all negative number in start of array & +ve number in end of an array.
+35-Program to count number of vowels in a given string.
+36-Program to count the number of words in a given string.
+37-Program to reverse each word in a given string.
+38-Program to find numbers of words characters and number in a given text file.
+39-Program to print pyramid pattern of numbers?
+40-Program to reverse a string without using loops and build-in functions.
+41-Program to generate Fibonacci series.
+42-Program to Print even and odd number in an array.
+43-Program to check the quality of two arrays.
+44-Program for how to reverse the order of elements in arraylist in java?
+45-Program for searching an element in array using a linear search.
+46-Program for searching an element in array using a Binary search.
+47-Program for Sorting an array using bubble sort.
+48-Program to sort elements in an array using build-in methods.
+49-Program to remove junk or special characters in string.
+50-Program to remove white spaces in string.
+51-Program to read data from text file.
+52-Program to write data in text file.
+53-Program to perform calculator operation.
+54-Program to find the second minimum and maximum number in an array.
+55-remove the duplicates in the string without using any inbuilt API (basically without using list or any other collection)
+56-password validation (for eg a string contains a special char, 2 alphabets, 2 numeric digit and lenght should be of 10 characters)
+57-write the code to read the value from excel sheet
+58-write the code find the Longest palindrome in given string
+59-To count the occurrences of each word in a given string
+60-To remove all occurrences of characters in a given string from another string
+61-To reverse the order of words in a string while keeping each word intact
+62-palindrome program if the number is palindrome or not.
+63-FibonacciSeries
+64-reverse the string on its own place
+65-reverse the string
+66-RemoveDuplicateChar  - from strings
+67-CountDuplicateWords - in a given sentence
+68-SplitStringAndReverse
+69-SecondHighestElement  - in an unsorted array
+70-ReturnIndexOfSubarrayEquallingTarget
+71-Print0To100WithoutLoop
+72-LongestPalindrome
+73-print the array in ascending order
+74-code to reverse the string and count the numbers in string
+75-Reverse the string preserving the space
+76-Reverse the string without using any inbuilt method
 
 
 ===========
@@ -191,7 +191,7 @@ API Testing
 15- candidate must know to automate http method using any tools/technology
 16- Different tools used in API testing manual and automation testing
 17- what are the differences between SOAP and REST API
-18- what is diference between put and patch
+18- what is difference between put and patch
 19- If API calls are costly then how you can manage that, what starteggy would be used
 20- What is the REST -context in REST Assured
 21- Request specification in REST Assured
@@ -227,49 +227,47 @@ SQL
 =========
 Framework
 =========
-1- how do we run only failed test cases in BDD cucumber or any other framewrork.
+1- how do we run only failed test cases in BDD cucumber or any other framework.
 2- What is strict in BDD cucumber
 3- what are the datatables in BDD cucumber, tell various methods by which datatables can be implemented in BDD cucumber.
-4- how to achieve the parellel run in selenium using BDD cucumber (if not only parellel run in selenium)
+4- how to achieve the parallel run in selenium using BDD cucumber (if not only parallel run in selenium)
 5- How to resolve the conflict in GIT
-6- Which reporting tool you have used in BDD cucmumber and how you have integrated this in your framewrork
-7- What is the difference between datatables and scenario outline in BDD cucmber
+6- Which reporting tool you have used in BDD cucumber and how you have integrated this in your framewrork
+7- What is the difference between datatables and scenario outline in BDD cucumber
 8- You have a scenario, a background and a hook, tell me the order in which it will execute in BDD
 9- How to run one step multiple times in cucumber and one test case multiple time in BDD cucumber
 10- Tell me what is CICD and how you achieved using jenkins, git actions or azure pipeline
 11- how do you implement CI tools to integrate the API testing ( CI tools such as Jenkins)
 12- what is sonarqube and sonarlint. give one example of an issue which we can get while scanning the code
 13- what is Build tool and which all tools you have used in your automation code
-14- Explain your frameword and code
+14- Explain your framework and code
 15- Map Interface
 16- poll scm in jenkins
 17- Testing Strategy
-18- What all paramters are there which indicate about the performance of any API or web application.
-19- different phases of srum in agile
-20- what is agile methadology
+18- What all parameters are there which indicate about the performance of any API or web application.
+19- different phases of scrum in agile
+20- what is agile methodology
 21- CICD tools used, such as jenkins, git actions and azure pipeline
-22- what is STLC with full explainnation
+22- what is STLC with full explanation
 23- what defect life cycle also explain in JIRA
 24- Your approach to start the testing
-25- Microservice arhitechtecture
+25- Microservice architecture
 26- 3 tier architecture
-27- what is clinet server architecture
+27- what is client server architecture
 28- What is dependency injection?
 29- Advantages and disadvantages of the agile
 30- What is the TDD approach and how it is different from the BDD approach.
 31- scrum story estimation questions
-32- paratmeteriztion in jenkins 
+32- parameterization in jenkins
 33- what is pattern used in current framework 
 34- what is POM and page factory
 35- what is patterns
 36- Different reporting tools which is used
-37- GIT branching startegy used - release - feature - task
-38- how you edit the lastet commit in GIT - git commit --amend -m "New message" git push --force repository-name branch-name.
+37- GIT branching strategy used - release - feature - task
+38- how you edit the lasted commit in GIT - git commit --amend -m "New message" git push --force repository-name branch-name.
 39- git merge 
 40- git rebase
 
-String
-collections
 
 
 
